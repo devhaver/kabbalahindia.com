@@ -8,3 +8,7 @@ allowBuilds:
   workerd: true
 minimumReleaseAgeExclude:
   - '@weburz/carousel'
+  - '@nuxtjs/seo'
+  - 'nuxt-schema-org'
+  - nuxtseo-shared@5.2.6
+  - nuxtseo-layer-devtools@5.2.6

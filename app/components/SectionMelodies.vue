@@ -40,7 +40,13 @@ const embeds = [
           height="352"
           frameborder="0"
           loading="lazy"
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          allow="
+            autoplay;
+            clipboard-write;
+            encrypted-media;
+            fullscreen;
+            picture-in-picture;
+          "
           class="rounded-[0.75rem]"
         />
       </div>

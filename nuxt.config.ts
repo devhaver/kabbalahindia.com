@@ -13,19 +13,48 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     "@weburz/carousel",
     "@weburz/particle-canvas",
+    "@nuxtjs/seo",
   ],
+
+  // Powers @nuxtjs/seo: canonical URLs, robots.txt, sitemap.xml, schema.org.
+  site: {
+    url: "https://kabbalahindia.com",
+    name: "Kabbalah Academy India",
+    description:
+      "A free introductory course in authentic Kabbalah, taught in English and Hindi. New cohorts start regularly — join free.",
+    defaultLocale: "en",
+  },
+
+  // The org identity behind the site — emitted as schema.org JSON-LD.
+  schemaOrg: {
+    identity: {
+      type: "Organization",
+      name: "Kabbalah Academy India",
+      url: "https://kabbalahindia.com",
+      sameAs: [
+        "https://www.youtube.com/@kabbalah_india",
+        "https://www.kabbalah.info/",
+      ],
+    },
+  },
+
+  // No generated OG images — runtime image rendering is extra Worker weight
+  // on Cloudflare for little gain on a single-page site.
+  ogImage: { enabled: false },
 
   css: ["~/assets/css/main.css"],
 
-  // GSAP is imported from a client-only plugin, which Vite's initial scan
-  // can't see — pre-bundle it to avoid a forced page reload in dev.
+  // Deps Vite's initial scan can't see (client-only plugin imports, deps of
+  // auto-imported composables) — pre-bundle to avoid a dev page reload.
   vite: {
     optimizeDeps: {
       include: [
+        "@unhead/schema-org/vue",
         "gsap",
         "gsap/ScrollSmoother",
         "gsap/ScrollTrigger",
         "gsap/SplitText",
+        "valibot",
       ],
     },
   },
@@ -60,25 +89,11 @@ export default defineNuxtConfig({
     head: {
       htmlAttrs: { lang: "en" },
       title: "Kabbalah Academy India · असली कबाला, अब भारत में।",
+      // description/OG/canonical come from the page's useSeoMeta + @nuxtjs/seo.
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
-        {
-          name: "description",
-          content:
-            "A free introductory course in authentic Kabbalah, taught in English and Hindi by teachers in India. Next cohort begins 5 June 2026.",
-        },
         { name: "theme-color", content: "#F5EBD7" },
-        // Open Graph
-        { property: "og:type", content: "website" },
-        { property: "og:title", content: "Kabbalah Academy India" },
-        {
-          property: "og:description",
-          content:
-            "Real Kabbalah. In India. Free, bilingual, taught live. असली कबाला, अब भारत में।",
-        },
-        { property: "og:url", content: "https://kabbalahindia.com" },
-        { name: "twitter:card", content: "summary_large_image" },
       ],
       link: [
         {

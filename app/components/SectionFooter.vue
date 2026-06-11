@@ -20,10 +20,16 @@ const cols: FooterCol[] = [
     header: "LEARN MORE · और जानें",
     external: true,
     links: [
-      { label: "Bnei Baruch — kabbalah.info", href: "https://www.kabbalah.info/" },
+      {
+        label: "Bnei Baruch — kabbalah.info",
+        href: "https://www.kabbalah.info/",
+      },
       { label: "कबाला हिंदी में", href: "https://www.kabbalah.info/hindi/" },
       { label: "Media archive", href: "https://kabbalahmedia.info/" },
-      { label: "World Kabbalah Convention", href: "https://convention.kli.one/" },
+      {
+        label: "World Kabbalah Convention",
+        href: "https://convention.kli.one/",
+      },
     ],
   },
 ];

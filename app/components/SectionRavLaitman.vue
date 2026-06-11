@@ -45,27 +45,38 @@ const archive = [
           class="font-body-en text-charcoal-500 mt-3 flex flex-col gap-[0.125rem] text-[0.625rem] tracking-[0.16em] uppercase md:text-[0.6875rem]"
         >
           Rav Dr. Michael Laitman · Bnei Baruch
-          <span class="text-charcoal-500/60 text-[0.5625rem] tracking-normal normal-case">
+          <span
+            class="text-charcoal-500/60 text-[0.5625rem] tracking-normal normal-case"
+          >
             Photo: Arielzur, Wikimedia Commons · CC BY 2.5
           </span>
         </figcaption>
       </figure>
 
       <div class="flex flex-col gap-[1.125rem]">
-        <Eyebrow text="THE TEACHER OF OUR GENERATION · इस पीढ़ी के शिक्षक" tone="maroon" />
+        <Eyebrow
+          text="THE TEACHER OF OUR GENERATION · इस पीढ़ी के शिक्षक"
+          tone="maroon"
+        />
         <BilingualHeading
-          :en-lines="['Rav Dr. Michael Laitman.', 'The living link in the chain.']"
+          :en-lines="[
+            'Rav Dr. Michael Laitman.',
+            'The living link in the chain.',
+          ]"
           hi="रव डॉ. माइकल लाइटमैन — इस परंपरा की जीवित कड़ी।"
           :accent-index="1"
           size="md"
         />
-        <p class="font-body-en text-charcoal-700 text-[0.8125rem] leading-relaxed md:text-base">
+        <p
+          class="font-body-en text-charcoal-700 text-[0.8125rem] leading-relaxed md:text-base"
+        >
           For twelve years, Rav Laitman was the closest student and personal
           assistant of RABASH — the eldest son of Baal HaSulam. In 1991 he
-          founded Bnei Baruch to pass that wisdom on, exactly as he received
-          it.
+          founded Bnei Baruch to pass that wisdom on, exactly as he received it.
         </p>
-        <p class="font-body-en text-charcoal-700 text-[0.8125rem] leading-relaxed md:text-base">
+        <p
+          class="font-body-en text-charcoal-700 text-[0.8125rem] leading-relaxed md:text-base"
+        >
           Today his daily lesson is studied live across the world — and your
           Indian teachers are his direct students.
           <span class="font-body-hi text-charcoal-500">

@@ -38,7 +38,6 @@ const videos = [
     description: "Short · EN",
   },
 ];
-
 </script>
 
 <template>

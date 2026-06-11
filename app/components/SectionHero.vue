@@ -57,14 +57,15 @@ const photos = [
         <h1
           class="font-display-en text-cream-300 text-[2.25rem] leading-[1.1] md:text-[3.75rem] md:leading-[1.05]"
         >
-          Start your inner journey with the authentic wisdom of Kabbalah.
+          Start your inner journey with the authentic wisdom of Kabbalah — now
+          in India.
         </h1>
         <p
           class="font-body-en text-cream-300/80 text-[0.8125rem] md:text-[1rem] max-w-prose"
         >
           Discover a practical path to deeper understanding, meaningful
           connection, and reveal the purpose of your life through the authentic
-          wisdom passed down through generations of sages, available for free in
+          wisdom passed down through generations of sages — free, online, in
           Hindi and English.
         </p>
         <div

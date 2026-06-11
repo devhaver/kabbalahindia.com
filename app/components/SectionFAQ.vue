@@ -33,7 +33,7 @@ const faqs: AccordionItem[] = [
   {
     label: "How are the live lessons run? In English or Hindi?",
     content:
-      "Both. We have separate live cohorts in English and Hindi. Most teachers are bilingual. You can also watch any lesson with subtitles after.",
+      "Both. We have separate live online cohorts (on Zoom) in English and Hindi. Most teachers are bilingual. You can also watch any lesson with subtitles after.",
   },
   {
     label: "Is there a paid version after the free one?",
@@ -41,6 +41,16 @@ const faqs: AccordionItem[] = [
       "No. There is no paid tier — not now, not later. Every course, lesson, book, and gathering is free, forever. We rely on donations from past students who want to keep this going.",
   },
 ];
+
+// FAQ rich data for search engines and AI assistants.
+useSchemaOrg(
+  faqs.map((f) =>
+    defineQuestion({
+      name: f.label as string,
+      acceptedAnswer: f.content as string,
+    }),
+  ),
+);
 </script>
 
 <template>

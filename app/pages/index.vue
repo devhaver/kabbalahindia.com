@@ -1,10 +1,43 @@
 <script setup lang="ts">
 useSeoMeta({
-  title: "Kabbalah Academy India · असली कबाला, अब भारत में।",
-  ogTitle: "Kabbalah Academy India",
+  // The site title template appends "| Kabbalah Academy India".
+  title: "Authentic Kabbalah Course in India · Free, Online, Hindi & English",
+  ogTitle: "Kabbalah Academy India — Authentic Kabbalah, Free & Online",
   description:
-    "A free introductory course in authentic Kabbalah, taught in English and Hindi. New cohorts start regularly — join free.",
+    "Learn authentic Kabbalah in India — a free online introductory course taught live in Hindi and English by Indian students of Bnei Baruch. असली कबाला, अब भारत में। Join free.",
+  ogDescription:
+    "Real Kabbalah. In India. Free, online, bilingual, taught live. असली कबाला, अब भारत में।",
+  twitterCard: "summary_large_image",
 });
+
+useSchemaOrg([
+  defineCourse({
+    name: "Introductory Kabbalah Course (India)",
+    description:
+      "A free online introductory course in authentic Kabbalah for students in India, taught live in Hindi and English.",
+    provider: {
+      type: "Organization",
+      name: "Kabbalah Academy India",
+      url: "https://kabbalahindia.com",
+      sameAs: ["https://www.kabbalah.info/"],
+    },
+    isAccessibleForFree: true,
+    inLanguage: ["en", "hi"],
+    courseMode: "Online",
+    hasCourseInstance: {
+      "@type": "CourseInstance",
+      courseMode: "Online",
+      courseWorkload: "PT4H",
+      inLanguage: ["en", "hi"],
+    },
+    offers: {
+      "@type": "Offer",
+      price: 0,
+      priceCurrency: "INR",
+      availability: "https://schema.org/InStock",
+    },
+  }),
+]);
 </script>
 
 <template>

@@ -57,7 +57,6 @@ const moments = [
     glow: "bg-[radial-gradient(circle_at_70%_20%,rgba(255,228,200,0.25),transparent_55%)]",
   },
 ];
-
 </script>
 
 <template>
