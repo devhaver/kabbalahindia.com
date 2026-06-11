@@ -7,6 +7,12 @@ useSeoMeta({
     "Learn authentic Kabbalah in India — a free online introductory course taught live in Hindi and English by Indian students of Bnei Baruch. असली कबाला, अब भारत में। Join free.",
   ogDescription:
     "Real Kabbalah. In India. Free, online, bilingual, taught live. असली कबाला, अब भारत में।",
+  // Static share card in public/ — composed from a real convention frame;
+  // no runtime og-image generation needed.
+  ogImage: "https://kabbalahindia.com/og-image.jpg",
+  ogImageWidth: 1200,
+  ogImageHeight: 630,
+  ogImageAlt: "Kabbalah Academy India — असली कबाला, अब भारत में। Free, online, live in Hindi & English.",
   twitterCard: "summary_large_image",
 });
 
