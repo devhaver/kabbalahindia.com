@@ -1,28 +1,44 @@
 <script setup lang="ts">
-const stories = [
+type Story = {
+  name: string;
+  initials: string;
+  city: string;
+  quote: string;
+  photo?: string;
+};
+
+const stories: Story[] = [
   {
-    name: "Priya Sharma",
-    initials: "PS",
-    city: "Pune · School teacher",
+    name: "Pritam",
+    initials: "P",
+    city: "India · Free course participant",
     quote:
-      "For years I read books, attended talks, tried Vedanta. Nothing landed. Then I sat with a teacher who could actually answer my questions.",
-    lang: "en" as const,
+      "This course is deeply spiritual, timeless, and truly for every generation. Instructor Shamir is great — disciplined, always punctual, and fully present in every Zoom meeting. With genuine care, he works hard to understand each student, patiently clearing every doubt and confusion.",
+    photo: "/testimonials/pritam.jpeg",
   },
   {
-    name: "रोहित अग्रवाल",
-    initials: "रो",
-    city: "बेंगलुरु · सॉफ्टवेयर इंजीनियर",
+    name: "Mithlesh",
+    initials: "M",
+    city: "India · Free course participant",
     quote:
-      "मैं इंजीनियर हूँ। मुझे logic चाहिए था, mystery नहीं। यहाँ कबाला एक science की तरह सिखाई जाती है।",
-    lang: "hi" as const,
+      "Thanks Shamir — it's a privilege to be given this opportunity. Kabbalah is not a course, it's a journey. There is none else besides Him. I think everyone should come, at least once in a lifetime.",
+    photo: "/testimonials/mithlesh.jpeg",
   },
   {
-    name: "Anjali Krishnan",
-    initials: "AK",
-    city: "Chennai · Homemaker",
+    name: "Nisha",
+    initials: "N",
+    city: "India · Free course participant",
     quote:
-      "I was tired of godmen telling me to surrender. Here nobody asks me to surrender anything — they ask me to study.",
-    lang: "en" as const,
+      "When I began, I was anxious — I had no idea what to expect. In our first meeting I sat silent, afraid my opinions would be judged. Shamir gently drew me out, and the group met me with warmth. Every lesson since has felt like a doorway — a systematic path to the art of life and our connection with the Divine. I have only just begun, and I want to go deeper.",
+    photo: "/testimonials/nisha.jpeg",
+  },
+  {
+    name: "Sheba D'Souza",
+    initials: "S",
+    city: "India · Six months in classes",
+    quote:
+      "Six months of Shamir's classes have genuinely transformed how I see life and myself. I was extremely sensitive to what others thought; Kabbalah has given me inner freedom and grounding — I now understand I am answerable only to the Creator. Shamir is kind, patient, and truly cares about his students. Very often a fellow student's question answers something I've carried within me for years. Every class feels insightful, healing, and spiritually strong.",
+    photo: "/testimonials/sheba.jpeg",
   },
 ];
 </script>
@@ -30,66 +46,96 @@ const stories = [
 <template>
   <section id="students" class="bg-maroon-500 text-cream-300">
     <div
-      class="mx-auto flex max-w-6xl flex-col gap-[22px] px-8 py-[20px] md:px-12 md:py-20"
+      class="mx-auto flex max-w-6xl flex-col gap-[1.375rem] px-8 py-[1.25rem] md:px-12 md:py-20"
     >
       <Eyebrow text="REAL STUDENTS · असली छात्र" tone="gold" />
       <h2
-        class="font-display-en text-cream-300 text-[32px] leading-[1.05] md:text-[48px]"
+        class="font-display-en text-cream-300 text-[2rem] leading-[1.05] md:text-[3rem]"
       >
         Real lives, not Instagram posts.
       </h2>
-      <p class="font-display-hi text-gold-500 text-[22px] md:text-[28px]">
+      <p
+        class="font-display-hi text-gold-500 text-[1.375rem] md:text-[1.75rem]"
+      >
         असली ज़िंदगियाँ, इंस्टा रील्स नहीं।
       </p>
       <p
-        class="font-body-en text-cream-300/75 max-w-prose text-[13px] md:text-base"
+        class="font-body-en text-cream-300/75 max-w-prose text-[0.8125rem] md:text-base"
       >
         From across India — students who stopped searching and started studying.
       </p>
-      <div class="flex flex-col gap-3 md:grid md:grid-cols-3 md:gap-6">
-        <figure
-          v-for="s in stories"
-          :key="s.name"
-          class="bg-cream-300 text-charcoal-800 flex flex-col gap-[10px] rounded-[12px] p-[14px] md:p-6"
-        >
-          <blockquote
-            class="font-display-en text-charcoal-800 text-[16px] leading-[1.4] md:text-lg"
-            :class="{ 'font-body-hi font-normal': s.lang === 'hi' }"
+      <BaseCarousel
+        class="kai-carousel students-carousel"
+        :options="{ align: 'start' }"
+        :slides-per-view="{ base: 1, '48rem': 3 }"
+        aria-label="Student testimonials"
+      >
+        <BaseSlide v-for="s in stories" :key="s.name">
+          <figure
+            class="bg-cream-300 text-charcoal-800 flex h-full flex-col overflow-hidden rounded-[1rem] shadow-[0_0.5rem_1.875rem_rgba(0,0,0,0.08)]"
           >
-            {{ s.quote }}
-          </blockquote>
-          <figcaption class="flex items-center gap-[10px]">
-            <UAvatar
-              :text="s.initials"
-              size="xl"
-              class="bg-gold-500 text-charcoal-800 font-body-en shrink-0"
-              :class="{ 'font-body-hi': s.lang === 'hi' }"
-            />
-            <div class="flex flex-col gap-1">
+            <div
+              class="relative h-[16.25rem] w-full overflow-hidden bg-charcoal-900 md:h-[18.75rem]"
+            >
+              <img
+                :src="s.photo"
+                :alt="s.name"
+                loading="lazy"
+                class="h-full w-full object-cover"
+              />
               <span
-                class="text-indigo-500 text-[13px] font-medium"
-                :class="s.lang === 'hi' ? 'font-body-hi' : 'font-body-en'"
+                aria-hidden="true"
+                class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-charcoal-900/30 to-transparent"
+              />
+            </div>
+            <div
+              class="flex flex-1 flex-col gap-3 p-5 pb-0 md:gap-4 md:p-6 md:pb-0"
+            >
+              <span
+                aria-hidden="true"
+                class="font-display-en text-gold-500 -mb-2 text-[3rem] leading-none md:text-[4rem]"
+              >
+                &ldquo;
+              </span>
+              <blockquote
+                class="font-display-en text-charcoal-800 text-[0.875rem] leading-[1.5] md:text-[0.9375rem]"
+              >
+                {{ s.quote }}
+              </blockquote>
+            </div>
+            <figcaption
+              class="border-charcoal-200/60 mx-5 mt-3 flex flex-col gap-[0.125rem] border-t pt-3 pb-5 md:mx-6 md:mt-4 md:pb-6"
+            >
+              <span
+                class="font-body-en text-indigo-500 text-[0.875rem] font-medium md:text-[0.9375rem]"
               >
                 {{ s.name }}
               </span>
               <span
-                class="text-charcoal-500 text-[11px]"
-                :class="s.lang === 'hi' ? 'font-body-hi' : 'font-body-en'"
+                class="font-body-en text-charcoal-500 text-[0.6875rem] md:text-[0.75rem]"
               >
                 {{ s.city }}
               </span>
-            </div>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="flex items-center pt-2">
-        <span
-          class="text-cream-300/75 inline-flex items-center gap-2 text-[12px]"
-        >
-          <UIcon name="i-lucide-users" class="text-gold-500 h-4 w-4" />
-          700+ stories like these
-        </span>
-      </div>
+            </figcaption>
+          </figure>
+        </BaseSlide>
+      </BaseCarousel>
     </div>
   </section>
 </template>
+
+<style scoped>
+.students-carousel {
+  --weburz-carousel-accent: var(--color-gold-500);
+  --weburz-carousel-slide-gap: 1rem;
+  --weburz-carousel-arrow-color: var(--color-cream-300);
+  --weburz-carousel-dot-color: var(--color-cream-300);
+  --weburz-carousel-dot-active-color: var(--color-gold-500);
+}
+
+@media (min-width: 48rem) {
+  .students-carousel {
+    --weburz-carousel-slide-gap: 1.5rem;
+  }
+}
+</style>

@@ -1,70 +1,61 @@
 <script setup lang="ts">
-const teachers = [
+const companions = [
   {
     name: "Shamir Galsurkar",
-    role: "Senior teacher · Mumbai",
+    role: "Your companion · Mumbai",
     bio: "Indian Jew, engineer. 12+ years studying with Laitman.",
     pills: ["Hindi · English · Marathi"],
-    photo: "bg-maroon-500",
-  },
-  {
-    name: "Priya Krishnan",
-    role: "South India · Bengaluru",
-    bio: "Software architect. 8 years studying. Connects Kabbalah with Vedantic roots.",
-    pills: ["English · Tamil · Hindi"],
-    photo: "bg-gold-500",
-  },
-  {
-    name: "Anand Sharma",
-    role: "Delhi NCR teacher",
-    bio: "Translator of RABASH into Hindi. Runs the Delhi weekly study since 2019.",
-    pills: ["Hindi · English"],
-    photo: "bg-indigo-500",
+    photo: "/people/shamir-galsurkar.jpg",
   },
 ];
+
+const cardRef = ref<HTMLElement | null>(null);
+useStaggerReveal(cardRef);
 </script>
 
 <template>
   <section id="teachers" class="bg-cream-300">
     <div
-      class="mx-auto flex max-w-6xl flex-col gap-[22px] px-8 py-[20px] md:px-12 md:py-20"
+      class="mx-auto flex max-w-6xl flex-col gap-[1.375rem] px-8 py-[1.25rem] md:px-12 md:py-20"
     >
-      <Eyebrow text="YOUR TEACHERS · आपके शिक्षक" tone="maroon" />
+      <Eyebrow text="COMPANIONS ON YOUR JOURNEY · सफ़र के साथी" tone="maroon" />
       <BilingualHeading
-        :en-lines="[
-          'Indians. Engineers, mothers, scholars.',
-          'Students of Rav.',
-        ]"
-        hi="भारतीय। इंजीनियर, माँएँ, विद्वान। रब के छात्र।"
+        :en-lines="['Not a guru.', 'A companion on your journey.']"
+        hi="गुरु नहीं — आपके सफ़र के साथी।"
         :accent-index="1"
         size="md"
       />
-      <p class="font-body-en text-charcoal-500 text-[12px] md:text-base">
-        Multiple teachers, no single guru.
+      <p class="font-body-en text-charcoal-500 text-[0.75rem] md:text-base">
+        Someone a few steps ahead, walking the same path.
         <span class="font-body-hi">हम साथ पढ़ते हैं, साथ चलते हैं।</span>
       </p>
-      <div
-        class="-mx-8 flex gap-3 overflow-x-auto px-8 md:mx-0 md:grid md:grid-cols-3 md:px-0 md:gap-6"
-      >
+      <div ref="cardRef" class="flex md:justify-start">
         <article
-          v-for="t in teachers"
+          v-for="t in companions"
           :key="t.name"
-          class="bg-cream-300 ring-border-maroon flex w-[180px] shrink-0 flex-col rounded-[12px] ring-1 md:w-auto md:bg-white"
+          class="bg-cream-300 ring-border-maroon flex w-full max-w-[17.5rem] flex-col rounded-[0.75rem] ring-1 md:max-w-[20rem] md:bg-white"
         >
-          <div :class="['h-[200px] rounded-t-[12px] md:h-[280px]', t.photo]" />
+          <img
+            :src="t.photo"
+            :alt="`${t.name} — your companion on the journey`"
+            loading="lazy"
+            class="h-[12.5rem] w-full rounded-t-[0.75rem] object-cover md:h-[17.5rem]"
+          />
           <div class="flex flex-col gap-1 p-3 md:p-5">
             <h3 class="font-display-en text-indigo-500 text-lg md:text-xl">
               {{ t.name }}
             </h3>
-            <p class="font-body-en text-charcoal-500 text-[11px] md:text-sm">
+            <p
+              class="font-body-en text-charcoal-500 text-[0.6875rem] md:text-sm"
+            >
               {{ t.role }}
             </p>
             <p
-              class="font-body-en text-charcoal-700 text-[12px] leading-snug md:text-sm"
+              class="font-body-en text-charcoal-700 text-[0.75rem] leading-snug md:text-sm"
             >
               {{ t.bio }}
             </p>
-            <div class="mt-1 flex flex-wrap gap-[6px]">
+            <div class="mt-1 flex flex-wrap gap-[0.375rem]">
               <UBadge
                 v-for="p in t.pills"
                 :key="p"

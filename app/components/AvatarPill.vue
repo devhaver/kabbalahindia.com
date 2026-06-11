@@ -17,19 +17,19 @@ withDefaults(
 
 <template>
   <div
-    class="inline-flex items-center gap-2 rounded-full bg-white/95 px-[14px] py-[6px]"
+    class="inline-flex items-center gap-2 rounded-full bg-white/95 px-[0.875rem] py-[0.375rem]"
   >
-    <div class="flex h-[22px] items-center">
+    <div class="flex h-[1.375rem] items-center">
       <span
         v-for="(a, i) in avatars"
         :key="i"
-        class="-mr-[6px] flex h-[22px] w-[22px] items-center justify-center rounded-full text-[9px] font-medium last:mr-0"
+        class="-mr-[0.375rem] flex h-[1.375rem] w-[1.375rem] items-center justify-center rounded-full text-[0.5625rem] font-medium last:mr-0"
         :class="[a.bg, a.fg]"
       >
         {{ a.initials }}
       </span>
     </div>
-    <span class="font-body-en text-charcoal-800 text-[12px] font-medium">
+    <span class="font-body-en text-charcoal-800 text-[0.75rem] font-medium">
       {{ count }}
     </span>
   </div>

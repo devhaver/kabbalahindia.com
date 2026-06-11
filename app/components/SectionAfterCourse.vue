@@ -1,33 +1,58 @@
 <script setup lang="ts">
-const cards = [
+type Card = {
+  en: string;
+  hi: string;
+  body: string;
+  photo: string;
+  img: string;
+  imgAlt: string;
+  credit?: string;
+  href: string;
+  linkLabel: string;
+};
+
+const cards: Card[] = [
   {
     en: "Ongoing live lessons",
     hi: "लगातार लाइव क्लासें",
-    body: "Continue with instructors and peers, weekly, in English and Hindi.",
+    body: "Continue with companions and peers, weekly, in English and Hindi — and the Rav's daily lesson is archived every morning, with subtitles.",
     photo: "bg-maroon-500",
-    brief: "Hindi study circle on Zoom, hands raised",
+    img: "https://i.ytimg.com/vi/HEeb2Bm8NGo/hq2.jpg",
+    imgAlt: "Shamir teaching a live lesson, with subtitles",
+    href: "https://kabbalahmedia.info/en/lessons/daily",
+    linkLabel: "Daily lesson archive",
   },
   {
     en: "Volunteer and deepen",
     hi: "स्वयंसेवा और गहराई",
-    body: `Translate, organize, mentor newer students. Service deepens what you've learned.`,
+    body: `Translate, organize, mentor newer students. Service deepens what you've learned — the whole source library is open.`,
     photo: "bg-gold-500",
-    brief: "student translating a page of Baal HaSulam",
+    img: "/people/baal-hasulam-writing.jpg",
+    imgAlt: "Baal HaSulam writing — the pages students now translate",
+    credit: "Photo: Wikimedia Commons · CC BY-SA 4.0",
+    href: "https://www.kabbalah.info/en/library/",
+    linkLabel: "Kabbalah Library",
   },
   {
     en: "Local + global Congresses",
     hi: "स्थानीय + वैश्विक सम्मेलन",
-    body: "Multi-day gatherings. Study, music, shared meals. India, Israel, and beyond.",
+    body: "Multi-day gatherings. Study, music, shared meals. India, Israel, and beyond — or join the World Kabbalah Convention virtually.",
     photo: "bg-indigo-500",
-    brief: "Congress crowd shot, diverse faces, warm light",
+    img: "https://i.ytimg.com/vi/oxRbrLUkxNI/hqdefault.jpg",
+    imgAlt: "World Kabbalah Convention — thousands together",
+    href: "https://convention.kli.one/",
+    linkLabel: "World Kabbalah Convention",
   },
 ];
+
+const cardsRef = ref<HTMLElement | null>(null);
+useStaggerReveal(cardsRef);
 </script>
 
 <template>
   <section class="bg-cream-300">
     <div
-      class="mx-auto flex max-w-6xl flex-col gap-[22px] px-8 py-[20px] md:px-12 md:py-20"
+      class="mx-auto flex max-w-6xl flex-col gap-[1.375rem] px-8 py-[1.25rem] md:px-12 md:py-20"
     >
       <Eyebrow text="AFTER THE COURSE · कोर्स के बाद" tone="maroon" />
       <BilingualHeading
@@ -36,21 +61,25 @@ const cards = [
         :accent-index="1"
         size="md"
       />
-      <div class="flex flex-col gap-4 md:grid md:grid-cols-3 md:gap-6">
+      <div
+        ref="cardsRef"
+        class="flex flex-col gap-4 md:grid md:grid-cols-3 md:gap-6"
+      >
         <article
           v-for="c in cards"
           :key="c.en"
-          class="ring-border-maroon flex flex-col gap-[10px] rounded-[12px] bg-white p-[14px] ring-1 md:p-5"
+          class="ring-border-maroon flex flex-col gap-[0.625rem] rounded-[0.75rem] bg-white p-[0.875rem] ring-1 md:p-5"
         >
           <div
-            class="flex h-[140px] items-end rounded-[8px] p-3 md:h-[180px]"
+            class="relative flex h-[8.75rem] items-end overflow-hidden rounded-[0.5rem] p-3 md:h-[11.25rem]"
             :class="c.photo"
           >
-            <span
-              class="font-body-en text-cream-300/60 text-[9px] md:text-[11px]"
-            >
-              {{ c.brief }}
-            </span>
+            <img
+              :src="c.img"
+              :alt="c.imgAlt"
+              loading="lazy"
+              class="absolute inset-0 h-full w-full object-cover"
+            />
           </div>
           <h3 class="font-display-en text-indigo-500 text-lg md:text-xl">
             {{ c.en }}
@@ -58,9 +87,18 @@ const cards = [
           <p class="font-display-hi text-maroon-500 text-sm md:text-base">
             {{ c.hi }}
           </p>
-          <p class="font-body-en text-charcoal-700 text-[13px] md:text-sm">
+          <p class="font-body-en text-charcoal-700 text-[0.8125rem] md:text-sm">
             {{ c.body }}
           </p>
+          <ExternalLink :href="c.href" tone="maroon" class="self-start">
+            {{ c.linkLabel }}
+          </ExternalLink>
+          <span
+            v-if="c.credit"
+            class="font-body-en text-charcoal-500/60 text-[0.5625rem]"
+          >
+            {{ c.credit }}
+          </span>
         </article>
       </div>
     </div>

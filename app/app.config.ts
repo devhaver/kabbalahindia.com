@@ -15,13 +15,13 @@ export default defineAppConfig({
     },
     input: {
       slots: {
-        base: "font-body-en rounded-[10px] bg-white",
+        base: "font-body-en rounded-[0.625rem] bg-white",
       },
     },
     formField: {
       slots: {
         label:
-          "font-body-en text-maroon-500 text-[9px] font-medium tracking-[0.16em] uppercase",
+          "font-body-en text-maroon-500 text-[0.5625rem] font-medium tracking-[0.16em] uppercase",
       },
     },
     accordion: {

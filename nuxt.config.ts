@@ -11,9 +11,24 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "@nuxt/eslint",
     "@vueuse/nuxt",
+    "@weburz/carousel",
+    "@weburz/particle-canvas",
   ],
 
   css: ["~/assets/css/main.css"],
+
+  // GSAP is imported from a client-only plugin, which Vite's initial scan
+  // can't see — pre-bundle it to avoid a forced page reload in dev.
+  vite: {
+    optimizeDeps: {
+      include: [
+        "gsap",
+        "gsap/ScrollSmoother",
+        "gsap/ScrollTrigger",
+        "gsap/SplitText",
+      ],
+    },
+  },
 
   ui: {
     colorMode: false,

@@ -45,7 +45,9 @@ const faqs: AccordionItem[] = [
 
 <template>
   <section id="faq" class="bg-cream-300">
-    <div class="mx-auto flex max-w-3xl flex-col gap-[22px] px-8 py-12 md:py-20">
+    <div
+      class="mx-auto flex max-w-3xl flex-col gap-[1.375rem] px-8 py-12 md:py-20"
+    >
       <Eyebrow text="COMMON QUESTIONS · आम सवाल" tone="maroon" />
       <BilingualHeading
         :en-lines="[`Everything you'd want to ask`, 'before you start.']"
@@ -56,33 +58,34 @@ const faqs: AccordionItem[] = [
 
       <UAccordion
         :items="faqs"
-        :default-value="faqs[0]!.label"
+        type="multiple"
+        :default-value="['0']"
         :ui="{
-          root: 'ring-border-maroon rounded-[12px] bg-white ring-1 divide-y divide-border-maroon',
+          root: 'ring-border-maroon rounded-[0.75rem] bg-white ring-1 divide-y divide-border-maroon',
           item: '',
           trigger:
-            'font-body-en text-indigo-500 text-[15px] md:text-base font-medium py-4 px-[14px] md:px-6 text-left',
-          content: 'pb-4 px-[14px] md:px-6',
-          body: 'font-body-en text-charcoal-700 text-[14px] md:text-base leading-relaxed pb-2',
-          trailingIcon: 'text-maroon-500 size-[18px] shrink-0',
+            'font-body-en text-indigo-500 text-[0.9375rem] md:text-base font-medium py-4 px-[0.875rem] md:px-6 text-left',
+          content: 'pb-4 px-[0.875rem] md:px-6',
+          body: 'font-body-en text-charcoal-700 text-[0.875rem] md:text-base leading-relaxed pb-2',
+          trailingIcon: 'text-maroon-500 size-[1.125rem] shrink-0',
         }"
       >
         <template #trailing="{ open }">
           <UIcon
             :name="open ? 'i-lucide-minus' : 'i-lucide-plus'"
-            class="text-maroon-500 size-[18px] shrink-0"
+            class="text-maroon-500 size-[1.125rem] shrink-0"
           />
         </template>
       </UAccordion>
 
       <div
-        class="bg-forest-500/10 flex items-start gap-2 rounded-[10px] p-[14px]"
+        class="bg-forest-500/10 flex items-start gap-2 rounded-[0.625rem] p-[0.875rem]"
       >
         <UIcon
           name="i-lucide-message-circle"
-          class="text-forest-500 mt-[2px] h-4 w-4 shrink-0"
+          class="text-forest-500 mt-[0.125rem] h-4 w-4 shrink-0"
         />
-        <p class="font-body-en text-charcoal-700 text-[12px] md:text-sm">
+        <p class="font-body-en text-charcoal-700 text-[0.75rem] md:text-sm">
           Other questions? WhatsApp us — a real teacher replies, usually within
           an hour.
         </p>

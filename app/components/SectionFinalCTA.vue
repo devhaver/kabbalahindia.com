@@ -55,9 +55,19 @@ const onSubmit = async () => {
 </script>
 
 <template>
-  <section id="signup" class="bg-indigo-500 text-cream-300">
+  <section id="signup" class="bg-indigo-500 text-cream-300 relative">
+    <ParticleBackdrop
+      :config="{
+        count: 40,
+        color: ['#c89b3c', '#f5ebd7', '#e27a2e'],
+        size: { min: 1, max: 2.5 },
+        opacity: { min: 0.08, max: 0.35 },
+        speed: { min: 0.08, max: 0.35 },
+        linked: { distance: 130, color: '#c89b3c', opacity: 0.12 },
+      }"
+    />
     <div
-      class="mx-auto flex max-w-2xl flex-col gap-[22px] px-9 py-[36px] md:py-24"
+      class="relative mx-auto flex max-w-2xl flex-col gap-[1.375rem] px-9 py-[2.25rem] md:py-24"
     >
       <div class="flex flex-col gap-3 md:items-center md:text-center">
         <Eyebrow text="JOIN · जुड़ें" tone="gold" />
@@ -69,7 +79,7 @@ const onSubmit = async () => {
           :accent-index="1"
         />
         <p
-          class="font-body-en text-cream-300/75 max-w-prose text-[13px] md:text-base"
+          class="font-body-en text-cream-300/75 max-w-prose text-[0.8125rem] md:text-base"
         >
           Name, WhatsApp, email. No password. No payment.
           <span class="font-body-hi">आप अंदर हैं।</span>
@@ -80,7 +90,7 @@ const onSubmit = async () => {
         <div
           v-if="submitted"
           key="success"
-          class="bg-cream-300 text-charcoal-800 flex flex-col items-start gap-3 rounded-[14px] p-[18px] md:p-8"
+          class="bg-cream-300 text-charcoal-800 flex flex-col items-start gap-3 rounded-[0.875rem] p-[1.125rem] md:p-8"
         >
           <div
             class="bg-forest-500 flex h-12 w-12 items-center justify-center rounded-full"
@@ -106,7 +116,7 @@ const onSubmit = async () => {
           key="form"
           :schema="schema"
           :state="state"
-          class="bg-cream-300 flex flex-col gap-4 rounded-[14px] p-[18px] md:p-8"
+          class="bg-cream-300 flex flex-col gap-4 rounded-[0.875rem] p-[1.125rem] md:p-8"
           @submit="onSubmit"
         >
           <UFormField label="NAME · नाम" name="name" required>
@@ -133,7 +143,7 @@ const onSubmit = async () => {
             >
               <template #leading>
                 <span
-                  class="font-body-en text-charcoal-800 text-[15px] font-medium"
+                  class="font-body-en text-charcoal-800 text-[0.9375rem] font-medium"
                 >
                   +91
                 </span>
@@ -155,7 +165,7 @@ const onSubmit = async () => {
 
           <!-- Honeypot: hidden from real users, only bots fill it. -->
           <div
-            class="absolute -left-[9999px] h-0 w-0 overflow-hidden"
+            class="absolute -left-[100rem] h-0 w-0 overflow-hidden"
             aria-hidden="true"
           >
             <label for="kai-website">Website</label>
@@ -170,7 +180,7 @@ const onSubmit = async () => {
 
           <p
             v-if="submitError"
-            class="text-vermillion-500 font-body-en bg-vermillion-500/10 rounded-md px-3 py-2 text-[12px]"
+            class="text-vermillion-500 font-body-en bg-vermillion-500/10 rounded-md px-3 py-2 text-[0.75rem]"
             role="alert"
           >
             {{ submitError }}
@@ -191,11 +201,11 @@ const onSubmit = async () => {
             <span
               v-for="t in ['No payment', 'No login', 'Unsubscribe anytime']"
               :key="t"
-              class="text-charcoal-500 flex items-center gap-[4px] text-[11px]"
+              class="text-charcoal-500 flex items-center gap-[0.25rem] text-[0.6875rem]"
             >
               <UIcon
                 name="i-lucide-check"
-                class="text-forest-500 h-[10px] w-[10px]"
+                class="text-forest-500 h-[0.625rem] w-[0.625rem]"
               />
               {{ t }}
             </span>
@@ -207,7 +217,7 @@ const onSubmit = async () => {
         :href="waUrl"
         target="_blank"
         rel="noopener"
-        class="font-body-en text-cream-300/70 hover:text-gold-500 inline-flex items-center gap-[6px] text-[12px] transition-colors"
+        class="font-body-en text-cream-300/70 hover:text-gold-500 inline-flex items-center gap-[0.375rem] text-[0.75rem] transition-colors"
       >
         Or open WhatsApp directly — या सीधे WhatsApp खोलें
         <UIcon name="i-lucide-arrow-up-right" class="text-gold-500 h-3 w-3" />

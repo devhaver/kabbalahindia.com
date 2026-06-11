@@ -1,34 +1,46 @@
 <script setup lang="ts">
+// Real videos from youtube.com/@kabbalah_india, embedded so the carousel can
+// pause them when the section scrolls out of view.
 const moments = [
   {
-    caption: "Congress '24",
-    sub: "Pune · December",
-    bg: "from-maroon-600 to-maroon-700",
-    accent: "text-gold-500",
+    id: "oxRbrLUkxNI",
+    title: "World Kabbalah Convention 2026",
+    description: "Thousands together · Israel",
   },
   {
-    caption: "Mumbai meet",
-    sub: "Weekly study circle",
-    bg: "from-gold-400 to-gold-600",
-    accent: "text-charcoal-800",
+    id: "wC3QgL8oJQA",
+    title: "Does nature sing?",
+    description: "Rav Laitman · Kabbalah TV",
   },
   {
-    caption: "Books open",
-    sub: "Sulam, slowly",
-    bg: "from-indigo-500 to-indigo-700",
-    accent: "text-gold-500",
+    id: "RAhpT2wJrWU",
+    title: "Why am I here?",
+    description: "Life's deepest questions",
   },
   {
-    caption: "Delhi circle",
-    sub: "Saturday morning",
-    bg: "from-vermillion-500 to-maroon-600",
-    accent: "text-gold-500",
+    id: "HEeb2Bm8NGo",
+    title: "Purpose of Life",
+    description: "From the academy",
   },
   {
-    caption: "Bengaluru women",
-    sub: "Hindi study group",
-    bg: "from-forest-500 to-forest-700",
-    accent: "text-gold-500",
+    id: "pzcMQF1xAqQ",
+    title: "The Secret to Real Freedom",
+    description: "Exit the ego, connect",
+  },
+  {
+    id: "LG164amKS0E",
+    title: "Why do relationships feel so hard?",
+    description: "Kabbalah explains",
+  },
+  {
+    id: "hpyVS8I935k",
+    title: "What's the point in the heart?",
+    description: "The first awakening",
+  },
+  {
+    id: "rE8ourMDVdY",
+    title: "Why are there still wars?",
+    description: "A 21st-century question",
   },
 ];
 </script>
@@ -40,46 +52,43 @@ const moments = [
     >
       <Eyebrow text="MOMENTS · हमारे समुदाय से" tone="maroon" />
       <h2
-        class="font-display-en text-indigo-500 text-[24px] leading-tight md:text-[40px]"
+        class="font-display-en text-indigo-500 text-[1.5rem] leading-tight md:text-[2.5rem]"
       >
         Real life inside the community
       </h2>
-      <UCarousel
-        :items="moments"
-        arrows
-        dots
-        align="start"
-        :ui="{
-          item: 'basis-[150px] md:basis-[260px] pl-3 md:pl-6',
-          container: '-ml-3 md:-ml-6',
-          controls: 'mt-6 flex items-center justify-between gap-4',
-          dots: 'flex items-center gap-[6px]',
-          dot: 'h-[6px] w-[6px] rounded-full bg-maroon-500/30 data-[state=active]:w-5 data-[state=active]:bg-maroon-500 transition-all',
-          arrows: 'flex gap-2',
-        }"
-      >
-        <template #default="{ item }">
-          <figure
-            class="relative flex h-[180px] flex-col justify-end overflow-hidden rounded-[12px] bg-gradient-to-br p-4 md:h-[280px]"
-            :class="item.bg"
-          >
-            <span
-              aria-hidden="true"
-              class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.15),transparent_60%)]"
-            />
-            <figcaption class="relative">
-              <p
-                class="font-display-en text-cream-300 text-[14px] leading-tight md:text-xl"
-              >
-                {{ item.caption }}
-              </p>
-              <p class="font-body-en mt-1 text-[10px]" :class="item.accent">
-                {{ item.sub }}
-              </p>
-            </figcaption>
-          </figure>
-        </template>
-      </UCarousel>
+      <YouTubeCarousel
+        class="kai-carousel moments-carousel"
+        :videos="moments"
+        :options="{ align: 'start' }"
+        :slides-per-view="{ base: 1, '48rem': 3 }"
+        on-scroll-away="pause"
+        aria-label="Moments from the community"
+      />
     </div>
   </section>
 </template>
+
+<style scoped>
+.moments-carousel {
+  --weburz-carousel-accent: var(--color-maroon-500);
+  --weburz-carousel-slide-gap: 0.75rem;
+  --weburz-carousel-arrow-color: var(--color-maroon-500);
+  --weburz-carousel-dot-color: var(--color-maroon-500);
+  --weburz-yt-radius: 0.75rem;
+  --weburz-carousel-caption-align: left;
+  --weburz-carousel-caption-gap: 0.5rem;
+  --weburz-carousel-caption-title-size: 0.875rem;
+  --weburz-carousel-caption-title-weight: 400;
+  --weburz-carousel-caption-title-color: var(--color-indigo-500);
+  --weburz-carousel-caption-description-size: 0.6875rem;
+  --weburz-carousel-caption-description-color: var(--color-maroon-500);
+  --weburz-carousel-caption-description-opacity: 0.8;
+}
+
+@media (min-width: 48rem) {
+  .moments-carousel {
+    --weburz-carousel-slide-gap: 1.5rem;
+    --weburz-carousel-caption-title-size: 1rem;
+  }
+}
+</style>

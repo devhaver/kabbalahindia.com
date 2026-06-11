@@ -6,22 +6,26 @@ const toggleLang = () => {
 </script>
 
 <template>
-  <header class="bg-indigo-500 sticky top-0 z-40 w-full">
+  <!-- fixed (not sticky): the header sits outside #smooth-wrapper, where a
+       sticky element has no scrolling in-flow parent to stick within. -->
+  <header class="bg-indigo-500 fixed inset-x-0 top-0 z-40 w-full">
     <div
-      class="mx-auto flex h-[52px] max-w-6xl items-center justify-between px-5 md:px-12"
+      class="mx-auto flex h-[3.25rem] max-w-6xl items-center justify-between px-5 md:px-12"
     >
       <a href="#top" class="flex items-baseline gap-2 leading-tight">
-        <span class="font-display-en text-cream-300 text-[15px] md:text-base">
+        <span
+          class="font-display-en text-cream-300 text-[0.9375rem] md:text-base"
+        >
           Kabbalah Academy
         </span>
-        <span class="font-display-hi text-gold-500 text-[12px] md:text-sm">
+        <span class="font-display-hi text-gold-500 text-[0.75rem] md:text-sm">
           कबाला अकादमी
         </span>
       </a>
       <div class="flex items-center gap-5">
         <button
           type="button"
-          class="flex items-center gap-[6px] text-[11px] font-medium"
+          class="flex items-center gap-[0.375rem] text-[0.6875rem] font-medium"
           :aria-label="lang === 'en' ? 'Switch to Hindi' : 'Switch to English'"
           @click="toggleLang"
         >
@@ -38,7 +42,7 @@ const toggleLang = () => {
         </button>
         <a
           href="#signup"
-          class="bg-saffron-500 hover:bg-saffron-600 text-charcoal-800 font-body-en hidden rounded-full px-4 py-[7px] text-[12px] font-medium transition-colors md:inline-flex md:items-center md:gap-1.5"
+          class="bg-saffron-500 hover:bg-saffron-600 text-charcoal-800 font-body-en hidden rounded-full px-4 py-[0.4375rem] text-[0.75rem] font-medium transition-colors md:inline-flex md:items-center md:gap-1.5"
         >
           Join free
           <UIcon name="i-lucide-arrow-right" class="h-3 w-3" />

@@ -16,15 +16,18 @@ withDefaults(
 </script>
 
 <template>
-  <div class="flex flex-wrap items-center gap-x-[14px] gap-y-2">
+  <div class="flex flex-wrap items-center gap-x-[0.875rem] gap-y-2">
     <div
       v-for="(item, i) in items"
       :key="i"
-      class="flex items-center gap-[5px]"
+      class="flex items-center gap-[0.3125rem]"
     >
-      <UIcon name="i-lucide-check" class="text-gold-500 h-[11px] w-[11px]" />
+      <UIcon
+        name="i-lucide-check"
+        class="text-gold-500 h-[0.6875rem] w-[0.6875rem]"
+      />
       <span
-        class="text-[11px]"
+        class="text-[0.6875rem]"
         :class="[
           tone === 'cream-on-dark' ? 'text-cream-300/70' : 'text-charcoal-500',
           item.lang === 'hi' ? 'font-body-hi' : 'font-body-en',

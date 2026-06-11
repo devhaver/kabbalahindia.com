@@ -25,10 +25,10 @@ const ruleClass: Record<Tone, string> = {
 </script>
 
 <template>
-  <div class="flex items-center gap-[10px]">
-    <span class="h-px w-[22px]" :class="ruleClass[props.tone]" />
+  <div class="flex items-center gap-[0.625rem]">
+    <span class="h-px w-[1.375rem]" :class="ruleClass[props.tone]" />
     <span
-      class="font-body-en text-[10px] font-medium uppercase"
+      class="font-body-en text-[0.625rem] font-medium uppercase"
       :class="toneClass[props.tone]"
       style="letter-spacing: 0.18em"
     >
