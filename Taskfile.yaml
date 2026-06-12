@@ -4,7 +4,7 @@ dotenv:
   - .env
 
 tasks:
-  default:
+  dev:
     desc: Spin up the dev server
     summary: |
       Start the Nuxt dev server with hot-reloading.

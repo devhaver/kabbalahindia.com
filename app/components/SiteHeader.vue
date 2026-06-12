@@ -6,8 +6,6 @@ const toggleLang = () => {
 </script>
 
 <template>
-  <!-- fixed (not sticky): the header sits outside #smooth-wrapper, where a
-       sticky element has no scrolling in-flow parent to stick within. -->
   <header class="bg-indigo-500 fixed inset-x-0 top-0 z-40 w-full">
     <div
       class="mx-auto flex h-[3.25rem] max-w-6xl items-center justify-between px-5 md:px-12"

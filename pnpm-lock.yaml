@@ -24,8 +24,8 @@ importers:
         specifier: ^14.3.0
         version: 14.3.0(magicast@0.5.3)(nuxt@4.4.8(@babel/plugin-syntax-jsx@7.29.7(@babel/core@7.29.7))(@babel/plugin-syntax-typescript@7.29.7(@babel/core@7.29.7))(@parcel/watcher@2.5.6)(@types/node@25.9.2)(@vue/compiler-sfc@3.5.35)(cac@6.7.14)(db0@0.3.4)(eslint@10.4.1(jiti@2.7.0))(ioredis@5.11.1)(lightningcss@1.32.0)(magicast@0.5.3)(optionator@0.9.4)(rollup-plugin-visualizer@7.0.1(rollup@4.61.1))(rollup@4.61.1)(srvx@0.11.16)(terser@5.48.0)(typescript@6.0.3)(vite@7.3.5(@types/node@25.9.2)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.48.0)(yaml@2.9.0))(vue-tsc@2.2.12(typescript@6.0.3))(yaml@2.9.0))(vue@3.5.35(typescript@6.0.3))
       '@weburz/carousel':
-        specifier: ^0.2.0
-        version: 0.2.0(magicast@0.5.3)(vue@3.5.35(typescript@6.0.3))
+        specifier: ^0.3.2
+        version: 0.3.2(magicast@0.5.3)(vue@3.5.35(typescript@6.0.3))
       '@weburz/particle-canvas':
         specifier: ^0.1.1
         version: 0.1.1(magicast@0.5.3)
@@ -3316,8 +3316,8 @@ packages:
     peerDependencies:
       vue: ^3.5.0
 
-  '@weburz/carousel@0.2.0':
-    resolution: {integrity: sha512-cFXpDkH+Ce2hmbj7La9Bbb/DnEPfx+on6nIu7U8fyOMSHVFJuak2CjDfzd7/r7958fg+bzwLTPZnRUJVQbuthQ==}
+  '@weburz/carousel@0.3.2':
+    resolution: {integrity: sha512-+ZDKf0ShFR7SFoTS3Yk7x3SIoTjZvW1eB87aqV3vMim7GKMSzXybeDFXcWdsLxyPpsifuCnyhXWTQvBDuvQLmw==}
     engines: {node: '>=20'}
 
   '@weburz/particle-canvas@0.1.1':
@@ -9991,7 +9991,7 @@ snapshots:
     dependencies:
       vue: 3.5.35(typescript@6.0.3)
 
-  '@weburz/carousel@0.2.0(magicast@0.5.3)(vue@3.5.35(typescript@6.0.3))':
+  '@weburz/carousel@0.3.2(magicast@0.5.3)(vue@3.5.35(typescript@6.0.3))':
     dependencies:
       '@nuxt/kit': 4.4.8(magicast@0.5.3)
       embla-carousel: 8.6.0

@@ -107,12 +107,24 @@
 }
 
 @layer base {
-  /* No scroll-behavior: smooth — ScrollSmoother eases anchor jumps when
-     motion is allowed; under reduced motion an instant jump is correct. */
   html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+  }
+
+  /* Under reduced motion an instant anchor jump is correct, so smooth
+     scrolling stays inside the media query. */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  /* Keep anchor targets clear of the 3.25rem fixed header. scroll-margin
+     (not scroll-padding) so Nuxt's router hash scrolling picks it up too. */
+  [id] {
+    scroll-margin-top: 3.25rem;
   }
 
   body {

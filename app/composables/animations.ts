@@ -7,7 +7,6 @@ export const useGsap = () => {
     gsap: nuxtApp.$gsap,
     ScrollTrigger: nuxtApp.$ScrollTrigger,
     SplitText: nuxtApp.$SplitText,
-    ScrollSmoother: nuxtApp.$ScrollSmoother,
   };
 };
 
