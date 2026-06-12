@@ -1,11 +1,11 @@
 <script setup lang="ts">
 const companions = [
   {
-    name: "Shamir Galsurkar",
+    name: "Shamir Shimshon Galsurkar",
     role: "Your companion · Mumbai",
-    bio: "Indian Jew, engineer. 12+ years studying with Laitman.",
+    bio: "An engineering consultant with many years of experience in community building, education, and personal development. He has been teaching and disseminating the wisdom of Kabbalah for many years and serves as a coordinator for India, supporting learning, connection, and community initiatives.",
     pills: ["Hindi · English · Marathi"],
-    photo: "/people/shamir-galsurkar.jpg",
+    photo: "/people/shamir-shimshon-galsurkar.jpeg",
   },
 ];
 

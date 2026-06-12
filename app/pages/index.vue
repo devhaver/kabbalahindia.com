@@ -12,7 +12,8 @@ useSeoMeta({
   ogImage: "https://kabbalahindia.com/og-image.jpg",
   ogImageWidth: 1200,
   ogImageHeight: 630,
-  ogImageAlt: "Kabbalah Academy India — असली कबाला, अब भारत में। Free, online, live in Hindi & English.",
+  ogImageAlt:
+    "Kabbalah Academy India — असली कबाला, अब भारत में। Free, online, live in Hindi & English.",
   twitterCard: "summary_large_image",
 });
 
