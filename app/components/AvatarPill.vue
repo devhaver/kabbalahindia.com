@@ -10,7 +10,7 @@ withDefaults(
       { initials: "AS", bg: "bg-saffron-500", fg: "text-charcoal-800" },
       { initials: "NK", bg: "bg-forest-500", fg: "text-cream-300" },
     ],
-    count: "12,400+ Indians learning",
+    count: "12,400+ students learning",
   },
 );
 </script>

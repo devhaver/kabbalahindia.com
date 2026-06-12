@@ -52,12 +52,6 @@ const videos = [
         on-scroll-away="pause"
         aria-label="Straight answers — an Indian in Israel on Kabbalah"
       />
-      <ExternalLink
-        href="https://www.youtube.com/@IndianInIsrael"
-        class="self-start"
-      >
-        More from @IndianInIsrael
-      </ExternalLink>
     </div>
   </section>
 </template>

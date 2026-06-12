@@ -6,8 +6,6 @@ const introVideo = {
   description: "Short · 60s · EN",
 };
 
-const introVideoUrl = `https://www.youtube.com/shorts/${introVideo.id}`;
-
 const introRef = ref<HTMLElement | null>(null);
 useStaggerReveal(introRef, { y: 20, stagger: 0.1 });
 
@@ -68,9 +66,7 @@ const photos = [
           wisdom passed down through generations of sages — free, online, in
           Hindi and English.
         </p>
-        <div
-          class="flex flex-col gap-[0.625rem] md:flex-row md:items-center md:gap-5"
-        >
+        <div>
           <UButton
             to="#signup"
             size="xl"
@@ -79,15 +75,6 @@ const photos = [
           >
             Start Free Course
           </UButton>
-          <a
-            :href="introVideoUrl"
-            target="_blank"
-            rel="noopener"
-            class="font-body-en text-gold-500 inline-flex items-center gap-[0.375rem] text-[0.75rem] font-medium md:text-[0.875rem]"
-          >
-            Watch a 60-second intro
-            <UIcon name="i-lucide-play" class="h-3 w-3" />
-          </a>
         </div>
         <div class="flex flex-wrap items-center gap-3 pt-2">
           <AvatarPill />
