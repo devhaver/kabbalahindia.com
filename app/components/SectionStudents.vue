@@ -40,6 +40,14 @@ const stories: Story[] = [
       "Six months of Shamir's classes have genuinely transformed how I see life and myself. I was extremely sensitive to what others thought; Kabbalah has given me inner freedom and grounding — I now understand I am answerable only to the Creator. Shamir is kind, patient, and truly cares about his students. Very often a fellow student's question answers something I've carried within me for years. Every class feels insightful, healing, and spiritually strong.",
     photo: "/testimonials/sheba.jpeg",
   },
+  {
+    name: "Sigalit",
+    initials: "S",
+    city: "USA · First India cohort",
+    quote:
+      "I grew up in a spiritual home but wanted to go further. Quietly, I asked God to show me the way — and soon Kabbalah books seemed to find me. Ten years ago I tried to study with Bnei Baruch without success; this year I finally joined Shamir's first group of students in India, all the way from the USA. I'm grateful to God, Shamir, and Rav Laitman — learning the authentic way, and longing to spread more love and humanity around me.",
+    photo: "/testimonials/sigalit.jpeg",
+  },
 ];
 </script>
 
@@ -73,11 +81,20 @@ const stories: Story[] = [
               class="relative h-[16.25rem] w-full overflow-hidden bg-charcoal-900 md:h-[18.75rem]"
             >
               <img
+                v-if="s.photo"
                 :src="s.photo"
                 :alt="s.name"
                 loading="lazy"
                 class="h-full w-full object-cover"
               />
+              <div
+                v-else
+                class="bg-indigo-500 flex h-full w-full items-center justify-center"
+              >
+                <span class="font-display-en text-gold-500 text-[5rem]">
+                  {{ s.initials }}
+                </span>
+              </div>
               <span
                 aria-hidden="true"
                 class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-charcoal-900/30 to-transparent"
