@@ -4,7 +4,7 @@ const companions = [
     name: "Shamir Shimshon Galsurkar",
     role: "Your companion · Mumbai",
     bio: "An engineering consultant with many years of experience in community building, education, and personal development. He has been teaching and disseminating the wisdom of Kabbalah for many years and serves as a coordinator for India, supporting learning, connection, and community initiatives.",
-    pills: ["Hindi · English · Marathi"],
+    pills: ["English · Marathi"],
     photo: "/people/shamir-shimshon-galsurkar.jpeg",
   },
 ];
@@ -18,16 +18,14 @@ useStaggerReveal(cardRef);
     <div
       class="mx-auto flex max-w-6xl flex-col gap-[1.375rem] px-8 py-[1.25rem] md:px-12 md:py-20"
     >
-      <Eyebrow text="COMPANIONS ON YOUR JOURNEY · सफ़र के साथी" tone="maroon" />
+      <Eyebrow text="COMPANIONS ON YOUR JOURNEY" tone="maroon" />
       <BilingualHeading
         :en-lines="['Not a guru.', 'A companion on your journey.']"
-        hi="गुरु नहीं — आपके सफ़र के साथी।"
         :accent-index="1"
         size="md"
       />
-      <p class="font-body-en text-charcoal-500 text-[0.75rem] md:text-base">
+      <p class="font-body-en text-charcoal-500 text-[1rem] md:text-base">
         Someone a few steps ahead, walking the same path.
-        <span class="font-body-hi">हम साथ पढ़ते हैं, साथ चलते हैं।</span>
       </p>
       <div ref="cardRef" class="flex md:justify-start">
         <article
@@ -46,12 +44,12 @@ useStaggerReveal(cardRef);
               {{ t.name }}
             </h3>
             <p
-              class="font-body-en text-charcoal-500 text-[0.6875rem] md:text-sm"
+              class="font-body-en text-charcoal-500 text-[0.9375rem] md:text-sm"
             >
               {{ t.role }}
             </p>
             <p
-              class="font-body-en text-charcoal-700 text-[0.75rem] leading-snug md:text-sm"
+              class="font-body-en text-charcoal-700 text-[1rem] leading-snug md:text-sm"
             >
               {{ t.bio }}
             </p>

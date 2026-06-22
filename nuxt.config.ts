@@ -21,7 +21,7 @@ export default defineNuxtConfig({
     url: "https://kabbalahindia.com",
     name: "Kabbalah Academy India",
     description:
-      "A free introductory course in authentic Kabbalah, taught in English and Hindi. New cohorts start regularly — join free.",
+      "A free introductory course in authentic Kabbalah, taught in English. New cohorts start regularly — join free.",
     defaultLocale: "en",
   },
 
@@ -87,7 +87,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: { lang: "en" },
-      title: "Kabbalah Academy India · असली कबाला, अब भारत में।",
+      title: "Kabbalah Academy India",
       // description/OG/canonical come from the page's useSeoMeta + @nuxtjs/seo.
       meta: [
         { charset: "utf-8" },

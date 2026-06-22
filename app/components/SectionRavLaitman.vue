@@ -4,25 +4,6 @@ const facts = [
   "40+ books on Kabbalah",
   "Daily lessons · live worldwide",
 ];
-
-// Verified items from the kabbalahmedia.info archive (titles fetched 2026-06-12).
-const archive = [
-  {
-    title: "Spreading the wisdom of Kabbalah in India",
-    meta: "Clip · 2019",
-    href: "https://kabbalahmedia.info/en/programs/cu/xL0P4dSD",
-  },
-  {
-    title: "A talk on spreading Kabbalah in India",
-    meta: "Talks · 2019",
-    href: "https://kabbalahmedia.info/en/programs/cu/yK4CM3sm",
-  },
-  {
-    title: "Meeting with a guru in India",
-    meta: "New Delhi · 2019",
-    href: "https://kabbalahmedia.info/en/events/cu/rHjedvLj",
-  },
-];
 </script>
 
 <template>
@@ -36,75 +17,51 @@ const archive = [
           class="border-gold-500/60 absolute -top-3 -left-3 h-full w-full rounded-[0.75rem] border md:-top-4 md:-left-4"
         />
         <img
-          src="/people/michael-laitman-lecture.jpg"
-          alt="Rav Dr. Michael Laitman teaching a Kabbalah lesson"
+          src="/people/michael-laitman-portrait.jpg"
+          alt="Rav Dr. Michael Laitman"
           loading="lazy"
           class="ring-border-maroon relative aspect-[4/5] w-full rounded-[0.75rem] object-cover ring-1"
         />
         <figcaption
-          class="font-body-en text-charcoal-500 mt-3 flex flex-col gap-[0.125rem] text-[0.625rem] tracking-[0.16em] uppercase md:text-[0.6875rem]"
+          class="font-body-en text-charcoal-500 mt-3 flex flex-col gap-[0.125rem] text-[0.875rem] tracking-[0.16em] uppercase md:text-[0.6875rem]"
         >
           Rav Dr. Michael Laitman · Bnei Baruch
-          <span
-            class="text-charcoal-500/60 text-[0.5625rem] tracking-normal normal-case"
-          >
-            Photo: Arielzur, Wikimedia Commons · CC BY 2.5
-          </span>
         </figcaption>
       </figure>
 
       <div class="flex flex-col gap-[1.125rem]">
-        <Eyebrow
-          text="THE TEACHER OF OUR GENERATION · इस पीढ़ी के शिक्षक"
-          tone="maroon"
-        />
+        <Eyebrow text="THE TEACHER OF OUR GENERATION" tone="maroon" />
         <BilingualHeading
           :en-lines="[
             'Rav Dr. Michael Laitman.',
             'The living link in the chain.',
           ]"
-          hi="रव डॉ. माइकल लाइटमैन — इस परंपरा की जीवित कड़ी।"
           :accent-index="1"
           size="md"
         />
         <p
-          class="font-body-en text-charcoal-700 text-[0.8125rem] leading-relaxed md:text-base"
+          class="font-body-en text-charcoal-700 text-[1.0625rem] leading-relaxed md:text-base"
         >
-          For twelve years, Rav Laitman was the closest student and personal
-          assistant of RABASH — the eldest son of Baal HaSulam. In 1991 he
-          founded Bnei Baruch to pass that wisdom on, exactly as he received it.
+          Rav Dr. Michael Laitman is an eminent scholar of Kabbalah, born in
+          Belarus in 1946 and now living in Israel. He was the first student and
+          personal assistant of Rav Baruch Ashlag — son of Rav Yehuda Ashlag
+          (Baal HaSulam), author of the Sulam, the commentary on the Book of the
+          Zohar.
         </p>
         <p
-          class="font-body-en text-charcoal-700 text-[0.8125rem] leading-relaxed md:text-base"
+          class="font-body-en text-charcoal-700 text-[1.0625rem] leading-relaxed md:text-base"
         >
-          Today his daily lesson is studied live across the world — and your
-          Indian teachers are his direct students.
-          <span class="font-body-hi text-charcoal-500">
-            आपके भारतीय शिक्षक उनके प्रत्यक्ष छात्र हैं।
-          </span>
+          He holds a PhD in Philosophy and Kabbalah from the Institute of
+          Philosophy of the Russian Academy of Sciences in Moscow, and a
+          Master's in Medical Cybernetics from the Saint Petersburg State
+          Polytechnic University. Today his daily lesson is studied live across
+          the world — and your Indian teachers are his direct students.
         </p>
         <ul class="flex flex-wrap gap-[0.375rem]">
           <li v-for="fact in facts" :key="fact">
             <UBadge :label="fact" color="primary" variant="soft" size="sm" />
           </li>
         </ul>
-        <div class="flex flex-col gap-2 pt-2">
-          <h3
-            class="font-body-en text-charcoal-500 text-[0.625rem] font-medium tracking-[0.16em] uppercase md:text-[0.6875rem]"
-          >
-            From the archive · Rav Laitman &amp; India
-          </h3>
-          <ul class="flex flex-col gap-[0.375rem]">
-            <li v-for="item in archive" :key="item.href">
-              <ExternalLink :href="item.href" tone="maroon">
-                {{ item.title }}
-                <span class="text-charcoal-500 text-[0.6875rem]">
-                  · {{ item.meta }}
-                </span>
-              </ExternalLink>
-            </li>
-          </ul>
-        </div>
       </div>
     </div>
   </section>

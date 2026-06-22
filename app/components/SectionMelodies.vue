@@ -18,14 +18,10 @@ const embeds = [
     <div
       class="mx-auto flex max-w-6xl flex-col gap-[1.375rem] px-8 py-12 md:px-12 md:py-20"
     >
-      <Eyebrow text="MELODIES · निगुन" tone="maroon" />
-      <BilingualHeading
-        :en-lines="['Wisdom you can hear.']"
-        hi="जो शब्द नहीं कह सकते, वो धुनें कहती हैं।"
-        size="md"
-      />
+      <Eyebrow text="MELODIES" tone="maroon" />
+      <BilingualHeading :en-lines="['Wisdom you can hear.']" size="md" />
       <p
-        class="font-body-en text-charcoal-700 max-w-prose text-[0.8125rem] md:text-base"
+        class="font-body-en text-charcoal-700 max-w-prose text-[1.0625rem] md:text-base"
       >
         Baal HaSulam composed melodies to carry what words can't. A century
         later they're still sung — at every convention, in every language.

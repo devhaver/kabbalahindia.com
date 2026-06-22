@@ -1,19 +1,19 @@
 <script setup lang="ts">
 useSeoMeta({
   // The site title template appends "| Kabbalah Academy India".
-  title: "Authentic Kabbalah Course in India · Free, Online, Hindi & English",
+  title: "Authentic Kabbalah Course in India · Free & Online",
   ogTitle: "Kabbalah Academy India — Authentic Kabbalah, Free & Online",
   description:
-    "Learn authentic Kabbalah in India — a free online introductory course taught live in Hindi and English by Indian students of Bnei Baruch. असली कबाला, अब भारत में। Join free.",
+    "Learn authentic Kabbalah in India — a free online introductory course taught live in English by Indian students of Bnei Baruch. Join free.",
   ogDescription:
-    "Real Kabbalah. In India. Free, online, bilingual, taught live. असली कबाला, अब भारत में।",
+    "Real Kabbalah. In India. Free, online, taught live.",
   // Static share card in public/ — composed from a real convention frame;
   // no runtime og-image generation needed.
   ogImage: "https://kabbalahindia.com/og-image.jpg",
   ogImageWidth: 1200,
   ogImageHeight: 630,
   ogImageAlt:
-    "Kabbalah Academy India — असली कबाला, अब भारत में। Free, online, live in Hindi & English.",
+    "Kabbalah Academy India — Free, online, authentic Kabbalah taught live.",
   twitterCard: "summary_large_image",
 });
 
@@ -21,7 +21,7 @@ useSchemaOrg([
   defineCourse({
     name: "Introductory Kabbalah Course (India)",
     description:
-      "A free online introductory course in authentic Kabbalah for students in India, taught live in Hindi and English.",
+      "A free online introductory course in authentic Kabbalah for students in India, taught live in English.",
     provider: {
       type: "Organization",
       name: "Kabbalah Academy India",
@@ -57,17 +57,12 @@ useSchemaOrg([
       <SectionMoments />
       <SectionIndianVoice />
       <SectionValueStack />
-      <SectionWhatChanges />
-      <SectionLineage />
-      <SectionRavLaitman />
-      <SectionRavQuote />
-      <SectionTeachers />
       <SectionStudents />
+      <SectionWhatChanges />
+      <SectionRavLaitman />
+      <SectionTeachers />
       <SectionProgram />
-      <SectionDayInside />
-      <SectionMelodies />
       <SectionWisdomVideo />
-      <SectionAfterCourse />
       <SectionFAQ />
       <SectionFinalCTA />
       <SectionFooter />

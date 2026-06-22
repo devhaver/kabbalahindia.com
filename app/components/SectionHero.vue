@@ -8,26 +8,6 @@ const introVideo = {
 
 const introRef = ref<HTMLElement | null>(null);
 useStaggerReveal(introRef, { y: 20, stagger: 0.1 });
-
-// Stills from the World Kabbalah Convention 2026 video on @kabbalah_india —
-// the bg color stays underneath as the loading backdrop.
-const photos = [
-  {
-    src: "https://i.ytimg.com/vi/oxRbrLUkxNI/hq1.jpg",
-    bg: "bg-maroon-500",
-    caption: "song at the convention",
-  },
-  {
-    src: "https://i.ytimg.com/vi/oxRbrLUkxNI/hq2.jpg",
-    bg: "bg-indigo-500",
-    caption: "friends reunited",
-  },
-  {
-    src: "https://i.ytimg.com/vi/oxRbrLUkxNI/hq3.jpg",
-    bg: "bg-forest-500",
-    caption: "students together",
-  },
-];
 </script>
 
 <template>
@@ -46,12 +26,7 @@ const photos = [
       class="relative mx-auto flex max-w-6xl flex-col gap-[1.125rem] px-7 py-[1.375rem] md:gap-8 md:px-12 md:py-16 md:grid md:grid-cols-2 md:items-center"
     >
       <div ref="introRef" class="flex flex-col gap-[1.125rem]">
-        <Eyebrow text="FINALLY · आख़िरकार" tone="gold" />
-        <p
-          class="font-display-hi text-gold-500 text-[1.125rem] md:text-[1.5rem]"
-        >
-          असली कबाला, अब भारत में।
-        </p>
+        <Eyebrow text="FINALLY" tone="gold" />
         <h1
           class="font-display-en text-cream-300 text-[2.25rem] leading-[1.1] md:text-[3.75rem] md:leading-[1.05]"
         >
@@ -59,12 +34,12 @@ const photos = [
           in India.
         </h1>
         <p
-          class="font-body-en text-cream-300/80 text-[0.8125rem] md:text-[1rem] max-w-prose"
+          class="font-body-en text-cream-300/80 text-[1.0625rem] md:text-[1rem] max-w-prose"
         >
           Discover a practical path to deeper understanding, meaningful
           connection, and reveal the purpose of your life through the authentic
           wisdom passed down through generations of sages — free, online, in
-          Hindi and English.
+          English.
         </p>
         <div>
           <UButton
@@ -91,30 +66,6 @@ const photos = [
           on-scroll-away="pause"
           aria-label="Watch the 60-second intro"
         />
-        <div class="grid grid-cols-3 gap-2 md:gap-3">
-          <div
-            v-for="p in photos"
-            :key="p.caption"
-            class="relative flex h-[5.625rem] items-end overflow-hidden rounded-[0.625rem] p-2 md:h-[8.125rem]"
-            :class="p.bg"
-          >
-            <img
-              :src="p.src"
-              :alt="`${p.caption} — World Kabbalah Convention 2026`"
-              loading="lazy"
-              class="absolute inset-0 h-full w-full object-cover"
-            />
-            <span
-              aria-hidden="true"
-              class="from-charcoal-900/70 absolute inset-0 bg-gradient-to-t to-transparent"
-            />
-            <span
-              class="font-body-en text-cream-300 relative text-[0.5625rem] opacity-90 md:text-[0.625rem]"
-            >
-              {{ p.caption }}
-            </span>
-          </div>
-        </div>
       </div>
     </div>
   </section>

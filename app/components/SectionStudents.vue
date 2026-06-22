@@ -48,19 +48,14 @@ const stories: Story[] = [
     <div
       class="mx-auto flex max-w-6xl flex-col gap-[1.375rem] px-8 py-[1.25rem] md:px-12 md:py-20"
     >
-      <Eyebrow text="REAL STUDENTS · असली छात्र" tone="gold" />
+      <Eyebrow text="REAL STUDENTS" tone="gold" />
       <h2
         class="font-display-en text-cream-300 text-[2rem] leading-[1.05] md:text-[3rem]"
       >
         Real lives, not Instagram posts.
       </h2>
       <p
-        class="font-display-hi text-gold-500 text-[1.375rem] md:text-[1.75rem]"
-      >
-        असली ज़िंदगियाँ, इंस्टा रील्स नहीं।
-      </p>
-      <p
-        class="font-body-en text-cream-300/75 max-w-prose text-[0.8125rem] md:text-base"
+        class="font-body-en text-cream-300/75 max-w-prose text-[1.0625rem] md:text-base"
       >
         From across India — students who stopped searching and started studying.
       </p>
@@ -98,7 +93,7 @@ const stories: Story[] = [
                 &ldquo;
               </span>
               <blockquote
-                class="font-display-en text-charcoal-800 text-[0.875rem] leading-[1.5] md:text-[0.9375rem]"
+                class="font-display-en text-charcoal-800 text-[1.0625rem] leading-[1.5] md:text-[0.9375rem]"
               >
                 {{ s.quote }}
               </blockquote>
@@ -107,12 +102,12 @@ const stories: Story[] = [
               class="border-charcoal-200/60 mx-5 mt-3 flex flex-col gap-[0.125rem] border-t pt-3 pb-5 md:mx-6 md:mt-4 md:pb-6"
             >
               <span
-                class="font-body-en text-indigo-500 text-[0.875rem] font-medium md:text-[0.9375rem]"
+                class="font-body-en text-indigo-500 text-[1.0625rem] font-medium md:text-[0.9375rem]"
               >
                 {{ s.name }}
               </span>
               <span
-                class="font-body-en text-charcoal-500 text-[0.6875rem] md:text-[0.75rem]"
+                class="font-body-en text-charcoal-500 text-[0.9375rem] md:text-[0.75rem]"
               >
                 {{ s.city }}
               </span>

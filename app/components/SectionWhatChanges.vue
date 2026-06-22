@@ -26,13 +26,13 @@ const benefits = [
     >
       <div class="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-20">
         <div class="flex flex-col gap-[1.125rem]">
-          <Eyebrow text="WHAT YOU'LL GAIN · आप क्या पाएँगे" tone="maroon" />
+          <Eyebrow text="WHAT YOU'LL GAIN" tone="maroon" />
           <BilingualHeading
             :en-lines="[`Upon completing the`, `free course, you'll gain.`]"
             :accent-index="1"
             size="md"
           />
-          <p class="font-body-en text-charcoal-500 text-[0.75rem] md:text-base">
+          <p class="font-body-en text-charcoal-500 text-[1rem] md:text-base">
             Four outcomes students consistently describe — the shift from
             reading about Kabbalah to living it.
           </p>
@@ -51,12 +51,12 @@ const benefits = [
             </span>
             <div class="flex flex-col gap-[0.25rem]">
               <span
-                class="font-display-en text-indigo-500 text-[1rem] md:text-xl"
+                class="font-display-en text-indigo-500 text-[1.0625rem] md:text-xl"
               >
                 {{ b.title }}
               </span>
               <span
-                class="font-body-en text-charcoal-500 text-[0.8125rem] leading-snug md:text-base"
+                class="font-body-en text-charcoal-500 text-[1.0625rem] leading-snug md:text-base"
               >
                 {{ b.body }}
               </span>
@@ -68,7 +68,7 @@ const benefits = [
         class="border-charcoal-200/60 ring-border-maroon rounded-[0.75rem] bg-white p-5 ring-1 md:p-8"
       >
         <p
-          class="font-body-en text-charcoal-700 text-[0.8125rem] leading-relaxed md:text-base"
+          class="font-body-en text-charcoal-700 text-[1.0625rem] leading-relaxed md:text-base"
         >
           This course offers direct and free access to authentic Kabbalistic
           wisdom — not just knowledge, but practical inner tools for

@@ -50,7 +50,7 @@ const moments = [
     <div
       class="mx-auto flex max-w-6xl flex-col gap-5 px-8 py-10 md:px-12 md:py-20"
     >
-      <Eyebrow text="MOMENTS · हमारे समुदाय से" tone="maroon" />
+      <Eyebrow text="MOMENTS" tone="maroon" />
       <h2
         class="font-display-en text-indigo-500 text-[1.5rem] leading-tight md:text-[2.5rem]"
       >

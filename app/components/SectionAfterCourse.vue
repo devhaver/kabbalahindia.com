@@ -1,7 +1,6 @@
 <script setup lang="ts">
 type Card = {
   en: string;
-  hi: string;
   body: string;
   photo: string;
   img: string;
@@ -14,8 +13,7 @@ type Card = {
 const cards: Card[] = [
   {
     en: "Ongoing live lessons",
-    hi: "लगातार लाइव क्लासें",
-    body: "Continue with companions and peers, weekly, in English and Hindi — and the Rav's daily lesson is archived every morning, with subtitles.",
+    body: "Continue with companions and peers, weekly, in English — and the Rav's daily lesson is archived every morning, with subtitles.",
     photo: "bg-maroon-500",
     img: "https://i.ytimg.com/vi/HEeb2Bm8NGo/hq2.jpg",
     imgAlt: "Shamir teaching a live lesson, with subtitles",
@@ -24,7 +22,6 @@ const cards: Card[] = [
   },
   {
     en: "Volunteer and deepen",
-    hi: "स्वयंसेवा और गहराई",
     body: `Translate, organize, mentor newer students. Service deepens what you've learned — the whole source library is open.`,
     photo: "bg-gold-500",
     img: "/people/baal-hasulam-writing.jpg",
@@ -35,7 +32,6 @@ const cards: Card[] = [
   },
   {
     en: "Local + global Congresses",
-    hi: "स्थानीय + वैश्विक सम्मेलन",
     body: "Multi-day gatherings. Study, music, shared meals. India, Israel, and beyond — or join the World Kabbalah Convention virtually.",
     photo: "bg-indigo-500",
     img: "https://i.ytimg.com/vi/oxRbrLUkxNI/hqdefault.jpg",
@@ -54,10 +50,9 @@ useStaggerReveal(cardsRef);
     <div
       class="mx-auto flex max-w-6xl flex-col gap-[1.375rem] px-8 py-[1.25rem] md:px-12 md:py-20"
     >
-      <Eyebrow text="AFTER THE COURSE · कोर्स के बाद" tone="maroon" />
+      <Eyebrow text="AFTER THE COURSE" tone="maroon" />
       <BilingualHeading
         :en-lines="[`The journey doesn't end.`, `It begins.`]"
-        hi="सफ़र ख़त्म नहीं होता। शुरू होता है।"
         :accent-index="1"
         size="md"
       />
@@ -84,10 +79,7 @@ useStaggerReveal(cardsRef);
           <h3 class="font-display-en text-indigo-500 text-lg md:text-xl">
             {{ c.en }}
           </h3>
-          <p class="font-display-hi text-maroon-500 text-sm md:text-base">
-            {{ c.hi }}
-          </p>
-          <p class="font-body-en text-charcoal-700 text-[0.8125rem] md:text-sm">
+          <p class="font-body-en text-charcoal-700 text-[1.0625rem] md:text-sm">
             {{ c.body }}
           </p>
           <ExternalLink :href="c.href" tone="maroon" class="self-start">
@@ -95,7 +87,7 @@ useStaggerReveal(cardsRef);
           </ExternalLink>
           <span
             v-if="c.credit"
-            class="font-body-en text-charcoal-500/60 text-[0.5625rem]"
+            class="font-body-en text-charcoal-500/60 text-[0.8125rem]"
           >
             {{ c.credit }}
           </span>

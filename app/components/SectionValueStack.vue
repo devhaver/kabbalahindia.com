@@ -2,27 +2,27 @@
 const values = [
   {
     icon: "i-lucide-book-open",
-    en: "Free e-books · ई-किताबें",
+    en: "Free e-books",
     body: "Baal HaSulam, Rav, the foundational texts.",
   },
   {
     icon: "i-lucide-graduation-cap",
-    en: "Intro course · परिचय कोर्स",
+    en: "Intro course",
     body: "Self-paced. Begin in week one.",
   },
   {
     icon: "i-lucide-message-circle",
-    en: "24/7 instructors · शिक्षक",
+    en: "24/7 instructors",
     body: "Real people. Real answers. Anytime.",
   },
   {
     icon: "i-lucide-library",
-    en: "Largest library · लाइब्रेरी",
+    en: "Largest library",
     body: "Thousands of lessons, translations.",
   },
   {
     icon: "i-lucide-users",
-    en: "Congresses · सम्मेलन",
+    en: "Congresses",
     body: "India, Israel, US, Japan and beyond.",
   },
   {
@@ -32,12 +32,12 @@ const values = [
   },
   {
     icon: "i-lucide-sun",
-    en: "Daily live class · रोज़ क्लास",
+    en: "Daily live class",
     body: "Live every morning, 6:30 AM IST.",
   },
   {
     icon: "i-lucide-calendar",
-    en: "Weekly meetups · साप्ताहिक",
+    en: "Weekly meetups",
     body: "Online plus in-person across India.",
   },
 ];
@@ -59,13 +59,11 @@ const hiddenCount = computed(() => values.length - 6);
       />
       <BilingualHeading
         :en-lines="['Everything you need', 'to begin.']"
-        hi="जुड़ते ही, सब कुछ मिलता है।"
         :accent-index="1"
         size="md"
       />
-      <p class="font-body-en text-charcoal-500 text-[0.75rem] md:text-base">
+      <p class="font-body-en text-charcoal-500 text-[1rem] md:text-base">
         Eight things, all free, the moment you join.
-        <span class="font-body-hi">आठ चीज़ें — समुदाय में जुड़ते ही।</span>
       </p>
       <div class="grid grid-cols-2 gap-[0.625rem] md:grid-cols-3 md:gap-4">
         <div
@@ -78,12 +76,12 @@ const hiddenCount = computed(() => values.length - 6);
             class="text-saffron-500 h-[1.375rem] w-[1.375rem]"
           />
           <h3
-            class="font-body-en text-indigo-500 text-[0.8125rem] font-medium md:text-base"
+            class="font-body-en text-indigo-500 text-[1.0625rem] font-medium md:text-base"
           >
             {{ v.en }}
           </h3>
           <p
-            class="font-body-en text-charcoal-500 text-[0.6875rem] leading-snug md:text-sm"
+            class="font-body-en text-charcoal-500 text-[0.9375rem] leading-snug md:text-sm"
           >
             {{ v.body }}
           </p>

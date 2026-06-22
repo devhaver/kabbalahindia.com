@@ -18,7 +18,7 @@ const toneClass = {
     :href="href"
     target="_blank"
     rel="noopener"
-    class="font-body-en inline-flex items-center gap-[0.375rem] text-[0.75rem] font-medium transition-colors md:text-sm"
+    class="font-body-en inline-flex items-center gap-[0.375rem] text-[1rem] font-medium transition-colors md:text-sm"
     :class="toneClass[tone]"
   >
     <slot />

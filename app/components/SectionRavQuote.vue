@@ -24,12 +24,12 @@
         />
         <div class="flex flex-col gap-1">
           <span
-            class="font-body-en text-cream-300 text-[0.75rem] font-medium md:text-sm"
+            class="font-body-en text-cream-300 text-[1rem] font-medium md:text-sm"
           >
             Baal HaSulam
           </span>
           <span
-            class="font-body-en text-cream-300/55 text-[0.5625rem] tracking-[0.14em] md:text-[0.6875rem]"
+            class="font-body-en text-cream-300/55 text-[0.8125rem] tracking-[0.14em] md:text-[0.6875rem]"
           >
             RABBI YEHUDA ASHLAG · AUTHOR OF THE SULAM
           </span>

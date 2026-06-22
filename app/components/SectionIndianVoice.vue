@@ -29,7 +29,7 @@ const videos = [
       class="mx-auto flex max-w-6xl flex-col gap-6 px-8 py-12 md:px-12 md:py-20"
     >
       <div class="flex flex-col gap-3 md:items-center md:text-center">
-        <Eyebrow text="STRAIGHT ANSWERS · सीधे जवाब" tone="gold" />
+        <Eyebrow text="STRAIGHT ANSWERS" tone="gold" />
         <h2
           class="font-display-en mt-2 text-[1.625rem] leading-[1.1] md:text-[2.5rem]"
         >
@@ -38,11 +38,6 @@ const videos = [
             >An Indian in Israel answers.</span
           >
         </h2>
-        <p
-          class="font-display-hi text-cream-300/75 text-[1.125rem] md:text-[1.5rem]"
-        >
-          आपके सवाल जायज़ हैं। जवाब सुनिए।
-        </p>
       </div>
       <YouTubeCarousel
         class="kai-carousel voice-carousel"

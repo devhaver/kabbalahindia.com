@@ -65,7 +65,7 @@ const moments = [
       class="mx-auto flex max-w-6xl flex-col gap-6 px-8 py-12 md:px-12 md:py-20"
     >
       <div class="flex flex-col gap-3 md:items-center md:text-center">
-        <Eyebrow text="A DAY INSIDE · अकादमी का एक दिन" tone="gold" />
+        <Eyebrow text="A DAY INSIDE" tone="gold" />
         <h2
           class="font-display-en mt-2 text-[1.75rem] leading-[1.05] md:text-[2.75rem]"
         >
@@ -76,11 +76,6 @@ const moments = [
             >to the evening chai.</span
           >
         </h2>
-        <p
-          class="font-display-hi text-cream-300/75 text-[1.25rem] md:text-[1.75rem]"
-        >
-          सुबह की क्लास से शाम की चाय तक।
-        </p>
         <DualClock class="mt-2" />
       </div>
       <BaseCarousel
@@ -109,17 +104,17 @@ const moments = [
               class="bg-cream-300/95 text-charcoal-800 relative flex flex-col gap-1 p-[0.875rem] backdrop-blur"
             >
               <span
-                class="bg-maroon-500/10 text-maroon-500 font-body-en self-start rounded-full px-2 py-[0.1875rem] text-[0.625rem] font-medium tracking-[0.14em]"
+                class="bg-maroon-500/10 text-maroon-500 font-body-en self-start rounded-full px-2 py-[0.1875rem] text-[0.875rem] font-medium tracking-[0.14em]"
               >
                 {{ item.time }}
               </span>
               <span
-                class="font-display-en text-indigo-500 text-[1rem] md:text-lg"
+                class="font-display-en text-indigo-500 text-[1.0625rem] md:text-lg"
               >
                 {{ item.title }}
               </span>
               <span
-                class="font-body-en text-charcoal-700 text-[0.6875rem] leading-snug md:text-[0.75rem]"
+                class="font-body-en text-charcoal-700 text-[0.9375rem] leading-snug md:text-[0.75rem]"
               >
                 {{ item.body }}
               </span>

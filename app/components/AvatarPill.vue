@@ -23,13 +23,13 @@ withDefaults(
       <span
         v-for="(a, i) in avatars"
         :key="i"
-        class="-mr-[0.375rem] flex h-[1.375rem] w-[1.375rem] items-center justify-center rounded-full text-[0.5625rem] font-medium last:mr-0"
+        class="-mr-[0.375rem] flex h-[1.375rem] w-[1.375rem] items-center justify-center rounded-full text-[0.8125rem] font-medium last:mr-0"
         :class="[a.bg, a.fg]"
       >
         {{ a.initials }}
       </span>
     </div>
-    <span class="font-body-en text-charcoal-800 text-[0.75rem] font-medium">
+    <span class="font-body-en text-charcoal-800 text-[1rem] font-medium">
       {{ count }}
     </span>
   </div>

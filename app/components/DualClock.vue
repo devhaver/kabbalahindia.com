@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const cities = [
-  { key: "india", en: "India", hi: "भारत", timeZone: "Asia/Kolkata" },
-  { key: "israel", en: "Israel", hi: "इज़राइल", timeZone: "Asia/Jerusalem" },
+  { key: "india", en: "India", timeZone: "Asia/Kolkata" },
+  { key: "israel", en: "Israel", timeZone: "Asia/Jerusalem" },
 ] as const;
 
 const times = useFormattedCityTimes(
@@ -71,9 +71,9 @@ useMotionSafe(root, () => {
         class="dual-clock__dot bg-gold-500 h-[0.375rem] w-[0.375rem] rounded-full"
       />
       <span
-        class="font-body-en text-cream-300/60 text-[0.625rem] tracking-[0.16em] uppercase"
+        class="font-body-en text-cream-300/60 text-[0.875rem] tracking-[0.16em] uppercase"
       >
-        Right now · इस वक़्त
+        Right now
       </span>
     </span>
     <div
@@ -87,11 +87,11 @@ useMotionSafe(root, () => {
         class="dual-clock__icon h-[0.875rem] w-[0.875rem]"
         :class="times[c.key]?.isDay ? 'text-gold-500' : 'text-cream-300/80'"
       />
-      <span class="font-body-en text-cream-300/80 text-[0.6875rem]">
-        {{ c.en }} · {{ c.hi }}
+      <span class="font-body-en text-cream-300/80 text-[0.9375rem]">
+        {{ c.en }}
       </span>
       <span
-        class="dual-clock__time font-display-en text-cream-300 text-[0.8125rem] uppercase [font-variant-numeric:tabular-nums]"
+        class="dual-clock__time font-display-en text-cream-300 text-[1.0625rem] uppercase [font-variant-numeric:tabular-nums]"
       >
         {{ times[c.key]?.time ?? "—:—" }}
       </span>

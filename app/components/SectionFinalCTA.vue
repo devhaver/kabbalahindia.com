@@ -70,19 +70,17 @@ const onSubmit = async () => {
       class="relative mx-auto flex max-w-2xl flex-col gap-[1.375rem] px-9 py-[2.25rem] md:py-24"
     >
       <div class="flex flex-col gap-3 md:items-center md:text-center">
-        <Eyebrow text="JOIN · जुड़ें" tone="gold" />
+        <Eyebrow text="JOIN" tone="gold" />
         <BilingualHeading
           :en-lines="['Just three details.', `That's all we need.`]"
-          hi="बस तीन जानकारियाँ। यही चाहिए।"
           size="lg"
           tone="on-dark"
           :accent-index="1"
         />
         <p
-          class="font-body-en text-cream-300/75 max-w-prose text-[0.8125rem] md:text-base"
+          class="font-body-en text-cream-300/75 max-w-prose text-[1.0625rem] md:text-base"
         >
           Name, WhatsApp, email. No password. No payment.
-          <span class="font-body-hi">आप अंदर हैं।</span>
         </p>
       </div>
 
@@ -100,14 +98,8 @@ const onSubmit = async () => {
           <h3 class="font-display-en text-indigo-500 text-2xl md:text-3xl">
             Welcome, friend.
           </h3>
-          <p class="font-display-hi text-maroon-500 text-lg md:text-xl">
-            नमस्ते, दोस्त।
-          </p>
-          <p class="font-body-en text-charcoal-700 text-sm md:text-base">
+          <p class="font-body-en text-charcoal-700 text-base md:text-base">
             A real teacher will WhatsApp you within an hour.
-            <span class="font-body-hi">
-              आपको कोई असली शिक्षक एक घंटे में WhatsApp करेगा।
-            </span>
           </p>
         </div>
 
@@ -119,7 +111,7 @@ const onSubmit = async () => {
           class="bg-cream-300 flex flex-col gap-4 rounded-[0.875rem] p-[1.125rem] md:p-8"
           @submit="onSubmit"
         >
-          <UFormField label="NAME · नाम" name="name" required>
+          <UFormField label="NAME" name="name" required>
             <UInput
               v-model="state.name"
               placeholder="Your name"
@@ -130,7 +122,7 @@ const onSubmit = async () => {
             />
           </UFormField>
 
-          <UFormField label="WHATSAPP · व्हाट्सऐप" name="whatsapp" required>
+          <UFormField label="WHATSAPP" name="whatsapp" required>
             <UInput
               v-model="state.whatsapp"
               type="tel"
@@ -143,7 +135,7 @@ const onSubmit = async () => {
             >
               <template #leading>
                 <span
-                  class="font-body-en text-charcoal-800 text-[0.9375rem] font-medium"
+                  class="font-body-en text-charcoal-800 text-[1.0625rem] font-medium"
                 >
                   +91
                 </span>
@@ -151,7 +143,7 @@ const onSubmit = async () => {
             </UInput>
           </UFormField>
 
-          <UFormField label="EMAIL · ईमेल" name="email" required>
+          <UFormField label="EMAIL" name="email" required>
             <UInput
               v-model="state.email"
               type="email"
@@ -180,7 +172,7 @@ const onSubmit = async () => {
 
           <p
             v-if="submitError"
-            class="text-vermillion-500 font-body-en bg-vermillion-500/10 rounded-md px-3 py-2 text-[0.75rem]"
+            class="text-vermillion-500 font-body-en bg-vermillion-500/10 rounded-md px-3 py-2 text-[1rem]"
             role="alert"
           >
             {{ submitError }}
@@ -194,14 +186,14 @@ const onSubmit = async () => {
             trailing-icon="i-lucide-arrow-right"
             class="text-charcoal-800 mt-2"
           >
-            Join the community · समुदाय में जुड़ें
+            Join the community
           </UButton>
 
           <div class="flex flex-wrap items-center gap-x-3 gap-y-1 pt-1">
             <span
               v-for="t in ['No payment', 'No login', 'Unsubscribe anytime']"
               :key="t"
-              class="text-charcoal-500 flex items-center gap-[0.25rem] text-[0.6875rem]"
+              class="text-charcoal-500 flex items-center gap-[0.25rem] text-[0.9375rem]"
             >
               <UIcon
                 name="i-lucide-check"
@@ -217,9 +209,9 @@ const onSubmit = async () => {
         :href="waUrl"
         target="_blank"
         rel="noopener"
-        class="font-body-en text-cream-300/70 hover:text-gold-500 inline-flex items-center gap-[0.375rem] text-[0.75rem] transition-colors"
+        class="font-body-en text-cream-300/70 hover:text-gold-500 inline-flex items-center gap-[0.375rem] text-[1rem] transition-colors"
       >
-        Or open WhatsApp directly — या सीधे WhatsApp खोलें
+        Or open WhatsApp directly
         <UIcon name="i-lucide-arrow-up-right" class="text-gold-500 h-3 w-3" />
       </a>
     </div>

@@ -31,9 +31,9 @@ const faqs: AccordionItem[] = [
     content: `No. Kabbalah doesn't ask you to convert to any religion. You stay who you are. This is purely a study.`,
   },
   {
-    label: "How are the live lessons run? In English or Hindi?",
+    label: "How are the live lessons run?",
     content:
-      "Both. We have separate live online cohorts (on Zoom) in English and Hindi. Most teachers are bilingual. You can also watch any lesson with subtitles after.",
+      "Live online cohorts on Zoom, in English. You can also watch any lesson with subtitles afterward.",
   },
   {
     label: "Is there a paid version after the free one?",
@@ -58,10 +58,9 @@ useSchemaOrg(
     <div
       class="mx-auto flex max-w-3xl flex-col gap-[1.375rem] px-8 py-12 md:py-20"
     >
-      <Eyebrow text="COMMON QUESTIONS · आम सवाल" tone="maroon" />
+      <Eyebrow text="COMMON QUESTIONS" tone="maroon" />
       <BilingualHeading
         :en-lines="[`Everything you'd want to ask`, 'before you start.']"
-        hi="शुरू करने से पहले — हर सवाल जो आपके मन में है।"
         :accent-index="1"
         size="sm"
       />
@@ -74,9 +73,9 @@ useSchemaOrg(
           root: 'ring-border-maroon rounded-[0.75rem] bg-white ring-1 divide-y divide-border-maroon',
           item: '',
           trigger:
-            'font-body-en text-indigo-500 text-[0.9375rem] md:text-base font-medium py-4 px-[0.875rem] md:px-6 text-left',
+            'font-body-en text-indigo-500 text-[1.0625rem] md:text-base font-medium py-4 px-[0.875rem] md:px-6 text-left',
           content: 'pb-4 px-[0.875rem] md:px-6',
-          body: 'font-body-en text-charcoal-700 text-[0.875rem] md:text-base leading-relaxed pb-2',
+          body: 'font-body-en text-charcoal-700 text-[1.0625rem] md:text-base leading-relaxed pb-2',
           trailingIcon: 'text-maroon-500 size-[1.125rem] shrink-0',
         }"
       >
@@ -95,7 +94,7 @@ useSchemaOrg(
           name="i-lucide-message-circle"
           class="text-forest-500 mt-[0.125rem] h-4 w-4 shrink-0"
         />
-        <p class="font-body-en text-charcoal-700 text-[0.75rem] md:text-sm">
+        <p class="font-body-en text-charcoal-700 text-[1rem] md:text-sm">
           Other questions? WhatsApp us — a real teacher replies, usually within
           an hour.
         </p>

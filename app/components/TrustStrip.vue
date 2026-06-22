@@ -7,7 +7,6 @@ withDefaults(
   {
     items: () => [
       { text: "Free forever" },
-      { text: "हिंदी", lang: "hi" },
       { text: "No login" },
     ],
     tone: "charcoal-on-light",
@@ -27,7 +26,7 @@ withDefaults(
         class="text-gold-500 h-[0.6875rem] w-[0.6875rem]"
       />
       <span
-        class="text-[0.6875rem]"
+        class="text-[0.9375rem]"
         :class="[
           tone === 'cream-on-dark' ? 'text-cream-300/70' : 'text-charcoal-500',
           item.lang === 'hi' ? 'font-body-hi' : 'font-body-en',

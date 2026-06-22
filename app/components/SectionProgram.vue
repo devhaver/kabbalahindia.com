@@ -2,22 +2,22 @@
 const steps = [
   {
     n: "01",
-    title: "Foundations · नींव",
-    body: "A 12-lesson introduction. No prerequisites. Hindi and English, side by side. Most students finish in 4–6 weeks.",
+    title: "Foundations",
+    body: "A 12-lesson introduction. No prerequisites. Most students finish in 4–6 weeks.",
   },
   {
     n: "02",
-    title: "Daily study · रोज़ का अध्ययन",
-    body: "Live morning lesson with a teacher, recorded for evening replay. 60 minutes. Hindi and English groups, every day.",
+    title: "Daily study",
+    body: "Live morning lesson with a teacher, recorded for evening replay. 60 minutes, every day.",
   },
   {
     n: "03",
-    title: "Friends, not followers · साथी",
+    title: "Friends, not followers",
     body: "Small WhatsApp study groups (8–12 people). You study together, you talk, you support. This is where it becomes real.",
   },
   {
     n: "04",
-    title: "Depth · गहराई",
+    title: "Depth",
     body: "Original texts — Zohar, Talmud Eser Sefirot, the writings of Baal HaSulam — studied slowly, with translation and commentary.",
   },
 ];
@@ -28,19 +28,14 @@ const steps = [
     <div
       class="mx-auto flex max-w-6xl flex-col gap-8 px-8 py-[1.25rem] md:items-center md:gap-12 md:py-24"
     >
-      <Eyebrow text="THE PROGRAM · कार्यक्रम" tone="gold" />
+      <Eyebrow text="THE PROGRAM" tone="gold" />
       <div class="flex max-w-3xl flex-col gap-3 md:items-center md:text-center">
         <h2
           class="font-display-en text-indigo-500 text-[1.875rem] leading-[1.05] md:text-[2.75rem]"
         >
           A clear path, four steps deep.
         </h2>
-        <p
-          class="font-display-hi text-maroon-500 text-[1.375rem] md:text-[1.75rem]"
-        >
-          एक साफ़ रास्ता, चार कदम गहरा।
-        </p>
-        <p class="font-body-en text-charcoal-700 text-[0.8125rem] md:text-base">
+        <p class="font-body-en text-charcoal-700 text-[1.0625rem] md:text-base">
           Every student begins with the foundations. You move at your own pace —
           no exams, no grading, no hurry.
         </p>
@@ -59,7 +54,7 @@ const steps = [
               {{ s.title }}
             </h3>
             <p
-              class="font-body-en text-charcoal-700 text-[0.8125rem] leading-relaxed"
+              class="font-body-en text-charcoal-700 text-[1.0625rem] leading-relaxed"
             >
               {{ s.body }}
             </p>
@@ -92,7 +87,7 @@ const steps = [
             <h3 class="font-display-en text-indigo-500 text-xl">
               {{ s.title }}
             </h3>
-            <p class="font-body-en text-charcoal-700 text-sm leading-relaxed">
+            <p class="font-body-en text-charcoal-700 text-base leading-relaxed">
               {{ s.body }}
             </p>
           </li>
@@ -106,7 +101,7 @@ const steps = [
           name="i-lucide-info"
           class="text-maroon-500 mt-[0.125rem] h-4 w-4 shrink-0"
         />
-        <p class="font-body-en text-charcoal-700 text-[0.75rem] md:text-sm">
+        <p class="font-body-en text-charcoal-700 text-[1rem] md:text-sm">
           Start with step 1 today. Steps 2–4 open as you're ready — no pressure,
           no deadlines.
         </p>

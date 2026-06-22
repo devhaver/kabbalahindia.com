@@ -7,7 +7,7 @@ type FooterCol = {
 
 const cols: FooterCol[] = [
   {
-    header: "SITE · साइट",
+    header: "SITE",
     links: [
       { label: "Companions", href: "#teachers" },
       { label: "Program", href: "#program" },
@@ -17,14 +17,13 @@ const cols: FooterCol[] = [
     ],
   },
   {
-    header: "LEARN MORE · और जानें",
+    header: "LEARN MORE",
     external: true,
     links: [
       {
         label: "Bnei Baruch — kabbalah.info",
         href: "https://www.kabbalah.info/",
       },
-      { label: "कबाला हिंदी में", href: "https://www.kabbalah.info/hindi/" },
       { label: "Media archive", href: "https://kabbalahmedia.info/" },
       {
         label: "World Kabbalah Convention",
@@ -43,6 +42,16 @@ const social = computed(() => [
     label: "YouTube",
   },
   {
+    icon: "i-lucide-instagram",
+    href: "https://www.instagram.com/Kabbalah.hindi",
+    label: "Instagram",
+  },
+  {
+    icon: "i-lucide-facebook",
+    href: "https://www.facebook.com/in.kabbalah.academy",
+    label: "Facebook",
+  },
+  {
     icon: "i-lucide-message-circle",
     href: waUrl.value,
     label: "WhatsApp",
@@ -59,18 +68,12 @@ const social = computed(() => [
         <span class="font-display-en text-cream-300 text-[1.25rem] md:text-3xl">
           Kabbalah Academy India
         </span>
-        <span class="font-display-hi text-gold-500 text-[0.9375rem] md:text-xl">
-          कबाला अकादमी, भारत
-        </span>
         <span
-          class="font-body-en text-cream-300/60 text-[0.8125rem] md:text-base"
+          class="font-body-en text-cream-300/60 text-[1.0625rem] md:text-base"
         >
           A direct path to self-knowledge.
         </span>
-        <span class="font-body-hi text-cream-300/50 text-[0.75rem] md:text-sm">
-          अपने आप तक का सीधा रास्ता।
-        </span>
-        <span class="font-body-en text-cream-300/40 mt-2 text-[0.6875rem]">
+        <span class="font-body-en text-cream-300/40 mt-2 text-[0.9375rem]">
           In direct association with Bnei Baruch, Israel.
         </span>
       </div>
@@ -82,7 +85,7 @@ const social = computed(() => [
           class="flex flex-col gap-[0.625rem]"
         >
           <h3
-            class="font-body-en text-gold-500 text-[0.625rem] font-medium tracking-[0.16em]"
+            class="font-body-en text-gold-500 text-[0.875rem] font-medium tracking-[0.16em]"
           >
             {{ col.header }}
           </h3>
@@ -92,16 +95,16 @@ const social = computed(() => [
             :href="l.href"
             :target="col.external ? '_blank' : undefined"
             :rel="col.external ? 'noopener' : undefined"
-            class="font-body-en text-cream-300/70 hover:text-cream-300 text-[0.8125rem] transition-colors"
+            class="font-body-en text-cream-300/70 hover:text-cream-300 text-[1.0625rem] transition-colors"
           >
             {{ l.label }}
           </a>
         </div>
         <div class="flex flex-col gap-[0.625rem]">
           <h3
-            class="font-body-en text-gold-500 text-[0.625rem] font-medium tracking-[0.16em]"
+            class="font-body-en text-gold-500 text-[0.875rem] font-medium tracking-[0.16em]"
           >
-            SOCIAL · सोशल
+            SOCIAL
           </h3>
           <div class="flex items-center gap-4">
             <a
@@ -121,7 +124,7 @@ const social = computed(() => [
 
       <TricolorStrip />
 
-      <p class="font-body-en text-cream-300/45 text-[0.6875rem]">
+      <p class="font-body-en text-cream-300/45 text-[0.9375rem]">
         © 2026 Kabbalah Academy India · A Bnei Baruch India initiative
       </p>
     </div>

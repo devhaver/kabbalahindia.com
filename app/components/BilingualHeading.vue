@@ -23,7 +23,7 @@ const enSizes = {
 };
 
 const hiSizes = {
-  sm: "text-[1rem] md:text-[1.25rem]",
+  sm: "text-[1.0625rem] md:text-[1.25rem]",
   md: "text-[1.125rem] md:text-[1.5rem]",
   lg: "text-[1.125rem] md:text-[1.75rem]",
   xl: "text-[1.375rem] md:text-[2rem]",

@@ -119,7 +119,7 @@ useMotionSafe(root, () => {
       ref="root"
       class="mx-auto flex max-w-6xl flex-col gap-8 px-8 py-[1.25rem] md:items-center md:gap-14 md:px-12 md:py-24"
     >
-      <Eyebrow text="AN UNBROKEN LINEAGE · अटूट परंपरा" tone="gold" />
+      <Eyebrow text="AN UNBROKEN LINEAGE" tone="gold" />
       <div class="flex max-w-3xl flex-col gap-3 md:items-center md:text-center">
         <h2
           class="font-display-en text-[1.625rem] leading-[1.1] md:text-[2.75rem]"
@@ -128,11 +128,6 @@ useMotionSafe(root, () => {
           <span class="md:inline md:ml-3 block">Five hundred years.</span>
           <span class="text-gold-500 md:inline md:ml-3 block">Unbroken.</span>
         </h2>
-        <p
-          class="font-display-hi text-cream-300/75 text-[1.125rem] md:text-[1.5rem]"
-        >
-          गुरु से शिष्य तक। पाँच सौ साल। अटूट।
-        </p>
       </div>
 
       <!-- Mobile: vertical chain. Desktop: horizontal row with gold connector. -->
@@ -152,14 +147,14 @@ useMotionSafe(root, () => {
               aria-hidden="true"
               class="lineage-halo bg-gold-500 ring-cream-300/10 h-[5rem] w-[5rem] rounded-full ring-2"
             />
-            <span class="font-display-en text-cream-300 text-[1rem]">
+            <span class="font-display-en text-cream-300 text-[1.0625rem]">
               {{ node.name }}
             </span>
-            <span class="font-body-en text-cream-300/55 text-[0.6875rem]">
+            <span class="font-body-en text-cream-300/55 text-[0.9375rem]">
               {{ node.dates }}
             </span>
             <span
-              class="font-body-en text-cream-300/70 px-4 text-center text-[0.6875rem]"
+              class="font-body-en text-cream-300/70 px-4 text-center text-[0.9375rem]"
             >
               {{ node.role }}
             </span>
@@ -206,12 +201,12 @@ useMotionSafe(root, () => {
               {{ node.name }}
             </span>
             <span
-              class="font-body-en text-gold-500 text-[0.6875rem] tracking-[0.1em]"
+              class="font-body-en text-gold-500 text-[0.9375rem] tracking-[0.1em]"
             >
               {{ node.dates }}
             </span>
             <span
-              class="font-body-en text-cream-300/70 text-[0.75rem] leading-snug"
+              class="font-body-en text-cream-300/70 text-[1rem] leading-snug"
             >
               {{ node.role }}
             </span>
@@ -220,7 +215,7 @@ useMotionSafe(root, () => {
       </div>
 
       <p
-        class="font-body-en text-gold-500 text-[0.625rem] tracking-[0.18em] md:text-xs"
+        class="font-body-en text-gold-500 text-[0.875rem] tracking-[0.18em] md:text-xs"
       >
         BNEI BARUCH · ISRAEL · SINCE 1991
       </p>
