@@ -48,6 +48,14 @@ const stories: Story[] = [
       "I grew up in a spiritual home but wanted to go further. Quietly, I asked God to show me the way — and soon Kabbalah books seemed to find me. Ten years ago I tried to study with Bnei Baruch without success; this year I finally joined Shamir's first group of students in India, all the way from the USA. I'm grateful to God, Shamir, and Rav Laitman — learning the authentic way, and longing to spread more love and humanity around me.",
     photo: "/testimonials/sigalit.jpeg",
   },
+  {
+    name: "Mumtaz Khan",
+    initials: "M",
+    city: "Mumbai, India · Free course participant",
+    quote:
+      "Shalom. I'm deeply grateful to Bnei Baruch and Rav Laitman for the chance to learn authentic Kabbalah free of charge, and to Shamir and our instructors from Israel for guiding us each week. Through Rabash, the study of the Ten Sefirot, and our reading groups, I've found wisdom that's hard to find in the ordinary material world. The essence of Kabbalah is transforming me from within — inspiring self-correction and bringing greater peace, purpose, and harmony to my life.",
+    photo: "/testimonials/mumtaz.jpeg",
+  },
 ];
 </script>
 
