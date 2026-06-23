@@ -9,7 +9,17 @@ export default <RouterConfig>{
 
     const hash = to.hash;
     if (hash && hash.length > 1) {
-      // Cold load via a deep link (e.g. opening /#signup directly). The page is
+      // Cold load via a widely-shared link that points at the registration form
+      // (#signup, at the very bottom). Landing there skips everything that
+      // explains the course, so on a first/external load we deliberately start
+      // at the top instead. In-page CTA clicks still scroll to the form (handled
+      // by the `from !== START_LOCATION` branch below), and other informational
+      // anchors (#program, #faq, …) still deep-link as expected.
+      if (from === START_LOCATION && hash === "#signup") {
+        return { left: 0, top: 0 };
+      }
+
+      // Cold load via a deep link (e.g. opening /#faq directly). The page is
       // image-heavy, so the target's position shifts as content above it loads.
       // Jump instantly once it exists, then re-correct after `load` settles the
       // layout. (Smooth-scrolling the full page height on first paint reads as
