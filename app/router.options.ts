@@ -1,5 +1,5 @@
-import { START_LOCATION } from "vue-router";
 import type { RouterConfig } from "@nuxt/schema";
+import { START_LOCATION } from "vue-router";
 
 // Custom scroll handling so deep links like /#signup land on the right section.
 export default <RouterConfig>{
@@ -27,7 +27,9 @@ export default <RouterConfig>{
       if (from === START_LOCATION) {
         return new Promise<false>((resolve) => {
           const jump = () =>
-            document.querySelector(hash)?.scrollIntoView({ behavior: "instant" });
+            document
+              .querySelector(hash)
+              ?.scrollIntoView({ behavior: "instant" });
           requestAnimationFrame(() => {
             jump();
             if (document.readyState !== "complete") {

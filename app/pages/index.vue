@@ -5,8 +5,7 @@ useSeoMeta({
   ogTitle: "Kabbalah Academy India — Authentic Kabbalah, Free & Online",
   description:
     "Learn authentic Kabbalah in India — a free online introductory course taught live in English by Indian students of Bnei Baruch. Join free.",
-  ogDescription:
-    "Real Kabbalah. In India. Free, online, taught live.",
+  ogDescription: "Real Kabbalah. In India. Free, online, taught live.",
   // Static share card in public/ — composed from a real convention frame;
   // no runtime og-image generation needed.
   ogImage: "https://kabbalahindia.com/og-image.jpg",

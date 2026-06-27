@@ -5,10 +5,7 @@ withDefaults(
     tone?: "cream-on-dark" | "charcoal-on-light";
   }>(),
   {
-    items: () => [
-      { text: "Free forever" },
-      { text: "No login" },
-    ],
+    items: () => [{ text: "Free forever" }, { text: "No login" }],
     tone: "charcoal-on-light",
   },
 );

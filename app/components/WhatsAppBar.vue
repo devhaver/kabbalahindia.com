@@ -34,9 +34,7 @@ onUnmounted(() => {
       href="#signup"
       class="bg-saffron-500 hover:bg-saffron-600 text-charcoal-800 fixed bottom-8 right-8 z-30 hidden items-center gap-2 rounded-full px-5 py-3 shadow-2xl ring-1 ring-black/5 transition-colors md:inline-flex"
     >
-      <span class="font-body-en text-[1.0625rem] font-medium">
-        Join free
-      </span>
+      <span class="font-body-en text-[1.0625rem] font-medium"> Join free </span>
       <UIcon name="i-lucide-arrow-right" class="h-4 w-4" />
     </a>
   </Transition>
