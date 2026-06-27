@@ -1,10 +1,13 @@
 import * as v from "valibot";
+import { sendMetaCapiLead } from "../utils/meta";
 import { sendTelegramSignup } from "../utils/telegram";
 
 const signupSchema = v.object({
   name: v.pipe(v.string(), v.trim(), v.minLength(2), v.maxLength(120)),
   whatsapp: v.pipe(v.string(), v.trim(), v.regex(/^\d{10}$/)),
   email: v.pipe(v.string(), v.trim(), v.email(), v.maxLength(254)),
+  // Shared with the browser Pixel's Lead event so Meta dedupes the two.
+  eventId: v.optional(v.pipe(v.string(), v.maxLength(100))),
   // Honeypot — accept any string, but reject silently if non-empty.
   // The schema MUST NOT enforce empty here, otherwise we'd return 400 and
   // tip off the bot. We check the value below.
@@ -57,6 +60,9 @@ export default defineEventHandler(async (event) => {
     signupWebhookToken,
     telegramBotToken,
     telegramChatId,
+    metaCapiAccessToken,
+    metaCapiTestEventCode,
+    public: { metaPixelId },
   } = useRuntimeConfig(event);
 
   // Fire generic webhook + Telegram in parallel. Both are independent and
@@ -92,6 +98,34 @@ export default defineEventHandler(async (event) => {
           );
         },
       ),
+    );
+  }
+
+  // Meta Conversions API — server-side mirror of the browser Pixel's Lead
+  // event, deduped via the shared eventId. Gated on both the Pixel ID and the
+  // CAPI token so it stays dormant until configured.
+  if (metaPixelId && metaCapiAccessToken) {
+    deliveries.push(
+      sendMetaCapiLead(
+        metaPixelId,
+        metaCapiAccessToken,
+        {
+          email: submission.email,
+          whatsapp: submission.whatsapp,
+          eventId: parsed.output.eventId,
+          eventSourceUrl: getRequestHeader(event, "referer"),
+          clientIp: submission.ip === "unknown" ? null : submission.ip,
+          userAgent: submission.userAgent,
+          fbp: getCookie(event, "_fbp") ?? null,
+          fbc: getCookie(event, "_fbc") ?? null,
+        },
+        metaCapiTestEventCode || undefined,
+      ).catch((err) => {
+        console.error(
+          "[signup] meta capi delivery failed",
+          err instanceof Error ? err.message : err,
+        );
+      }),
     );
   }
 

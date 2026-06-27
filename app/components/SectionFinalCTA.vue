@@ -27,9 +27,13 @@ const submitting = ref(false);
 const submitted = ref(false);
 const submitError = ref("");
 
+const { $metaTrack, $umamiTrack } = useNuxtApp();
+
 const onSubmit = async () => {
   submitting.value = true;
   submitError.value = "";
+  // Shared id so the browser Pixel Lead and the server-side CAPI Lead dedupe.
+  const eventId = crypto.randomUUID();
   try {
     await $fetch("/api/signup", {
       method: "POST",
@@ -38,9 +42,14 @@ const onSubmit = async () => {
         whatsapp: state.whatsapp,
         email: state.email,
         website: state.website,
+        eventId,
       },
     });
     submitted.value = true;
+    // Fire the conversion through both analytics — Meta for ad optimization,
+    // Umami for first-party funnel/Goal tracking.
+    $metaTrack("Lead", { content_name: "signup" }, { eventID: eventId });
+    $umamiTrack("signup");
   } catch (err: unknown) {
     const e = err as { statusCode?: number; statusMessage?: string };
     submitError.value =
