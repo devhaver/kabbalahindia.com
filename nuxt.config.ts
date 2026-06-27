@@ -146,11 +146,23 @@ export default defineNuxtConfig({
     // chat_id from https://api.telegram.org/bot<TOKEN>/getUpdates
     telegramBotToken: "",
     telegramChatId: "",
+    // Meta Conversions API (CAPI) — server-side Lead events, deduped against
+    // the browser Pixel via a shared event_id. Set the System-User access
+    // token via NUXT_META_CAPI_ACCESS_TOKEN. When empty (or the Pixel ID is
+    // unset), the server skips CAPI delivery.
+    metaCapiAccessToken: "",
+    // Optional. Set NUXT_META_CAPI_TEST_EVENT_CODE while validating events in
+    // Events Manager → Test Events; leave empty in production.
+    metaCapiTestEventCode: "",
     public: {
       whatsappUrl: "https://chat.whatsapp.com/placeholder",
       // Self-hosted Umami at https://umami.weburz.com. Set the site UUID via
       // NUXT_PUBLIC_UMAMI_WEBSITE_ID — when empty, app.vue skips the script.
       umamiWebsiteId: "",
+      // Meta Pixel ID. Set via NUXT_PUBLIC_META_PIXEL_ID — when empty, the
+      // meta-pixel.client.ts plugin skips loading the Pixel entirely. Also
+      // used server-side to build the CAPI endpoint URL.
+      metaPixelId: "",
     },
   },
 
