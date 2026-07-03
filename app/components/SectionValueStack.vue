@@ -45,6 +45,9 @@ const values = [
 const expanded = ref(false);
 const visible = computed(() => (expanded.value ? values : values.slice(0, 6)));
 const hiddenCount = computed(() => values.length - 6);
+const toggle = () => {
+  expanded.value = !expanded.value;
+};
 </script>
 
 <template>
@@ -97,7 +100,7 @@ const hiddenCount = computed(() => values.length - 6);
         variant="link"
         size="sm"
         class="text-maroon-500 hover:text-maroon-600 self-start !px-0"
-        @click="expanded = !expanded"
+        @click="toggle"
       />
     </div>
   </section>
