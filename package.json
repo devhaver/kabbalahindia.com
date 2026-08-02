@@ -19,7 +19,7 @@
   "dependencies": {
     "@nuxt/fonts": "^0.14.0",
     "@nuxt/image": "^2.0.0",
-    "@nuxt/ui": "^3.3.7",
+    "@nuxt/ui": "^4.10.0",
     "@vueuse/core": "^14.3.0",
     "@vueuse/nuxt": "^14.3.0",
     "@weburz/carousel": "^0.3.2",
