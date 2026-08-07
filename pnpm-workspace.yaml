@@ -12,3 +12,4 @@ minimumReleaseAgeExclude:
   - 'nuxt-schema-org'
   - nuxtseo-shared@5.2.6
   - nuxtseo-layer-devtools@5.2.6
+  - '@weburz/particle-canvas@0.2.1'
