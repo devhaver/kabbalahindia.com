@@ -57,16 +57,14 @@ useStaggerReveal(introRef, { y: 20, stagger: 0.1 });
         </div>
       </div>
 
-      <div class="flex flex-col gap-2 md:gap-3">
-        <YouTubeCarousel
-          class="hero-video"
-          :videos="[introVideo]"
-          :show-arrows="false"
-          :show-dots="false"
-          on-scroll-away="pause"
-          aria-label="Watch the 60-second intro"
-        />
-      </div>
+      <YouTubeCarousel
+        class="hero-video"
+        :videos="[introVideo]"
+        :show-arrows="false"
+        :show-dots="false"
+        on-scroll-away="pause"
+        aria-label="Watch the 60-second intro"
+      />
     </div>
   </section>
 </template>

@@ -1,18 +1,8 @@
 <script setup lang="ts">
 const waUrl = useWhatsApp();
 
-const showDesktopCta = ref(false);
-const scrollHandler = () => {
-  showDesktopCta.value = window.scrollY > 400;
-};
-
-onMounted(() => {
-  scrollHandler();
-  window.addEventListener("scroll", scrollHandler, { passive: true });
-});
-onUnmounted(() => {
-  window.removeEventListener("scroll", scrollHandler);
-});
+const { y } = useWindowScroll();
+const showDesktopCta = computed(() => y.value > 400);
 </script>
 
 <template>

@@ -8,6 +8,16 @@ export type TelegramSubmission = {
 const escapeHtml = (s: string): string =>
   s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
+// Instantiated once and reused — the formatter is locale- and zone-fixed.
+const istFormatter = new Intl.DateTimeFormat("en-IN", {
+  timeZone: "Asia/Kolkata",
+  day: "2-digit",
+  month: "short",
+  hour: "2-digit",
+  minute: "2-digit",
+  hour12: true,
+});
+
 export const formatIndianPhone = (waWithPlus: string): string => {
   // "+919876543210" → "+91 98765 43210"
   const digits = waWithPlus.replace(/^\+/, "");
@@ -19,14 +29,7 @@ export const formatIndianPhone = (waWithPlus: string): string => {
 
 export const formatIstTime = (iso: string): string => {
   try {
-    return new Date(iso).toLocaleString("en-IN", {
-      timeZone: "Asia/Kolkata",
-      day: "2-digit",
-      month: "short",
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: true,
-    });
+    return istFormatter.format(new Date(iso));
   } catch {
     return iso;
   }

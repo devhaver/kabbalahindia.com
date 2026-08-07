@@ -53,10 +53,8 @@ const onSubmit = async () => {
   } catch (err: unknown) {
     const e = err as { statusCode?: number; statusMessage?: string };
     submitError.value =
-      e.statusCode === 429
-        ? "Too many attempts — please try again in a bit."
-        : e.statusMessage ||
-          `Something went wrong. WhatsApp us if it keeps failing.`;
+      e.statusMessage ||
+      `Something went wrong. WhatsApp us if it keeps failing.`;
   } finally {
     submitting.value = false;
   }

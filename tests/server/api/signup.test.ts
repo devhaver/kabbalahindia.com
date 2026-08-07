@@ -7,7 +7,7 @@ type ApiResult = { status: number; data: unknown };
 /**
  * Wraps $fetch so non-2xx responses return a shape we can assert on, rather
  * than throwing. Each call sets a fake source IP via X-Forwarded-For so the
- * server-side rate limiter buckets each test independently.
+ * request handler can distinguish tests if it ever needs to.
  */
 const postSignup = async (
   body: Record<string, unknown>,

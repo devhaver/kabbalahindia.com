@@ -52,7 +52,6 @@ export default defineNuxtConfig({
         "@unhead/schema-org/vue",
         "gsap",
         "gsap/ScrollTrigger",
-        "gsap/SplitText",
         "valibot",
       ],
     },
