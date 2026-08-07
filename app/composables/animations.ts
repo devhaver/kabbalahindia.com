@@ -6,7 +6,6 @@ export const useGsap = () => {
   return {
     gsap: nuxtApp.$gsap,
     ScrollTrigger: nuxtApp.$ScrollTrigger,
-    SplitText: nuxtApp.$SplitText,
   };
 };
 
