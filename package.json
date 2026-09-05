@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@iconify-json/lucide": "^1.2.120",
-    "@nuxt/eslint": "^1.16.0",
+    "@nuxt/eslint": "^1.17.0",
     "@nuxt/test-utils": "^4.0.3",
     "@nuxtjs/seo": "^5.2.6",
     "eslint": "^10.4.1",
