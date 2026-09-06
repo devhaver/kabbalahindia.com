@@ -29,17 +29,17 @@ ENV NODE_ENV=production \
     NITRO_HOST=0.0.0.0
 
 # Run as a non-root user.
-RUN addgroup -S app && adduser -S app -G app
+RUN addgroup -S app && adduser -S -u 10001 app -G app
 WORKDIR /app
 
 # Only the Nitro server output is needed at runtime.
 COPY --from=build --chown=app:app /app/.output ./.output
 
-USER app
+USER 10001
 EXPOSE 3000
 
 # Basic healthcheck — your orchestrator can also probe this.
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
-    CMD wget --quiet --tries=1 --spider http://127.0.0.1:3000/ || exit 1
+    CMD ["wget", "--quiet", "--tries=1", "--spider", "http://127.0.0.1:3000/"]
 
 CMD ["node", ".output/server/index.mjs"]
