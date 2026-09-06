@@ -92,23 +92,7 @@ const onSubmit = async () => {
       </div>
 
       <Transition name="fade" mode="out-in">
-        <div
-          v-if="submitted"
-          key="success"
-          class="bg-cream-300 text-charcoal-800 flex flex-col items-start gap-3 rounded-[0.875rem] p-[1.125rem] md:p-8"
-        >
-          <div
-            class="bg-forest-500 flex h-12 w-12 items-center justify-center rounded-full"
-          >
-            <UIcon name="i-lucide-check" class="text-cream-300 h-6 w-6" />
-          </div>
-          <h3 class="font-display-en text-indigo-500 text-2xl md:text-3xl">
-            Welcome, friend.
-          </h3>
-          <p class="font-body-en text-charcoal-700 text-base md:text-base">
-            A real teacher will WhatsApp you within an hour.
-          </p>
-        </div>
+        <SignupSuccess v-if="submitted" key="success" :whatsapp-url="waUrl" />
 
         <UForm
           v-else
