@@ -8,11 +8,9 @@ export default defineNuxtConfig({
   modules: [
     "@nuxt/ui",
     "@nuxt/fonts",
-    "@nuxt/image",
     "@nuxt/eslint",
     "@vueuse/nuxt",
     "@weburz/carousel",
-    "@weburz/particle-canvas",
     "@nuxtjs/seo",
   ],
 
@@ -48,37 +46,51 @@ export default defineNuxtConfig({
   // auto-imported composables) — pre-bundle to avoid a dev page reload.
   vite: {
     optimizeDeps: {
-      include: [
-        "@unhead/schema-org/vue",
-        "gsap",
-        "gsap/ScrollTrigger",
-        "valibot",
-      ],
+      include: ["@unhead/schema-org/vue", "valibot"],
     },
   },
 
   ui: {
     colorMode: false,
+    // Only generate theme classes for the Nuxt UI components the page uses.
+    experimental: { componentDetection: true },
   },
 
+  // Icons the page uses by static name; bundling them avoids runtime
+  // requests to the icon API (SignupSuccess shows its download icon after
+  // a client-side state change, so the scanner misses it).
+  icon: {
+    clientBundle: {
+      icons: ["lucide:download", "lucide:check", "lucide:arrow-up-right"],
+      scan: true,
+    },
+  },
+
+  // Only what the design uses: DM Serif Display (regular + italic quotes),
+  // Tiro Devanagari Hindi for the one Hindi line, Inter 400/500/600.
+  // `display: swap` keeps text visible while the fonts load.
   fonts: {
     families: [
-      { name: "DM Serif Display", provider: "google", weights: [400] },
+      {
+        name: "DM Serif Display",
+        provider: "google",
+        weights: [400],
+        styles: ["normal", "italic"],
+        display: "swap",
+      },
       {
         name: "Tiro Devanagari Hindi",
         provider: "google",
         weights: [400],
-        styles: ["normal", "italic"],
+        styles: ["normal"],
+        display: "swap",
       },
       {
         name: "Inter",
         provider: "google",
-        weights: [400, 500, 600, 700],
-      },
-      {
-        name: "Mukta",
-        provider: "google",
-        weights: [400, 500, 600, 700],
+        weights: [400, 500, 600],
+        styles: ["normal"],
+        display: "swap",
       },
     ],
   },
@@ -91,7 +103,7 @@ export default defineNuxtConfig({
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
-        { name: "theme-color", content: "#F5EBD7" },
+        { name: "theme-color", content: "#f7f9fc" },
       ],
       link: [
         {
@@ -123,6 +135,14 @@ export default defineNuxtConfig({
           "Permissions-Policy":
             "geolocation=(), microphone=(), camera=(), payment=(), interest-cohort=()",
           "X-DNS-Prefetch-Control": "off",
+        },
+      },
+      // The free-book PDF is for signups, not search. Static files bypass the
+      // Worker; the cloudflare-pages preset writes these rules to dist/_headers
+      // where Cloudflare merges them with the "/*" rule above.
+      "/downloads/**": {
+        headers: {
+          "X-Robots-Tag": "noindex, nofollow",
         },
       },
       "/api/**": {

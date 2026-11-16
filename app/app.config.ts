@@ -21,14 +21,14 @@ export default defineAppConfig({
     formField: {
       slots: {
         label:
-          "font-body-en text-maroon-500 text-[0.5625rem] font-medium tracking-[0.16em] uppercase",
+          "font-body-en text-mist-700 text-[0.5625rem] font-medium tracking-[0.16em] uppercase",
       },
     },
     accordion: {
       slots: {
-        item: "border-border-maroon border-b last:border-b-0",
+        item: "border-mist-200 border-b last:border-b-0",
         trigger: "font-body-en text-indigo-500 font-medium py-4",
-        content: "font-body-en text-charcoal-700 pb-4",
+        content: "font-body-en text-ink-500 pb-4",
       },
     },
     badge: {

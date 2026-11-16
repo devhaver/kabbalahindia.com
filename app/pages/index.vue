@@ -47,24 +47,17 @@ useSchemaOrg([
 </script>
 
 <template>
-  <div id="top" class="bg-cream-300 min-h-screen pt-[3.25rem] pb-14 md:pb-0">
-    <!-- pt compensates for the fixed SiteHeader (h-[3.25rem]) in app.vue;
-         pb clears the fixed mobile WhatsAppBar. -->
-    <TricolorStrip />
+  <div id="top" class="bg-mist-50 min-h-screen pb-16 md:pb-0">
+    <!-- pb clears the fixed mobile WhatsAppBar. -->
     <main>
       <SectionHero />
-      <SectionMoments />
-      <SectionIndianVoice />
-      <SectionValueStack />
-      <SectionStudents />
-      <SectionWhatChanges />
-      <SectionRavLaitman />
-      <SectionTeachers />
+      <SectionTeacher />
       <SectionProgram />
-      <SectionWisdomVideo />
+      <SectionStudents />
+      <SectionSource />
       <SectionFAQ />
       <SectionFinalCTA />
-      <SectionFooter />
     </main>
+    <SectionFooter />
   </div>
 </template>
