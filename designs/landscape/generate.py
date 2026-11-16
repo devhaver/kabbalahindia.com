@@ -2,7 +2,7 @@
 
 Pure standard library. Run: python3 generate.py [outdir]  (default: this dir).
 Ridges are fractal-noise silhouettes in a dusty-blue palette; the vegetation
-(deodar/pine line plus one broad peepal-like tree) is built procedurally.
+(sparse deodar/pine rows fading with distance) is built procedurally.
 """
 
 import math
@@ -114,70 +114,6 @@ def conifer(x, y, h, w, lean, rnd):
     return "M" + " L".join(f"{px:.1f},{py:.1f}" for px, py in pts) + "Z"
 
 
-def blob(cx, cy, r, rnd, squash=0.7):
-    """Small irregular leaf cluster, smoothed through midpoints."""
-    n = rnd.randint(6, 8)
-    pts = []
-    for k in range(n):
-        a = 2 * math.pi * k / n + rnd.uniform(-0.25, 0.25)
-        rr = r * rnd.uniform(0.7, 1.2)
-        pts.append((cx + math.cos(a) * rr, cy + math.sin(a) * rr * squash))
-    mids = [((pts[i][0] + pts[(i + 1) % n][0]) / 2, (pts[i][1] + pts[(i + 1) % n][1]) / 2) for i in range(n)]
-    d = f"M{mids[-1][0]:.1f},{mids[-1][1]:.1f}"
-    for i in range(n):
-        d += f" Q{pts[i][0]:.1f},{pts[i][1]:.1f} {mids[i][0]:.1f},{mids[i][1]:.1f}"
-    return d + "Z"
-
-
-def broad_tree(x, y, s, seed, lean=0.0):
-    """Peepal/banyan spirit: low-forking trunk, spreading limbs, layered
-    canopy of many small leaf clusters with sky showing between them."""
-    rnd = random.Random(seed)
-    segs, tips, mids = [], [], []
-
-    def limb(x0, y0, ang, length, width, depth):
-        bend = rnd.uniform(-0.25, 0.25)
-        x1 = x0 + math.sin(ang) * length
-        y1 = y0 - math.cos(ang) * length
-        cx = x0 + math.sin(ang + bend) * length * 0.55
-        cy = y0 - math.cos(ang + bend) * length * 0.55
-        segs.append((x0, y0, cx, cy, x1, y1, width))
-        if depth == 0:
-            tips.append((x1, y1))
-            return
-        mids.append((cx, cy))
-        for k in range(rnd.choice([2, 2, 3])):
-            da = rnd.uniform(0.3, 0.75) * (-1 if k % 2 == 0 else 1) + rnd.uniform(-0.15, 0.15)
-            limb(x1, y1, ang + da, length * rnd.uniform(0.55, 0.78), width * 0.62, depth - 1)
-
-    # trunk, then a low fork into three main limbs
-    fx = x + lean * 10 * s
-    fy = y - 34 * s
-    segs.append((x, y + 4, x + lean * 3 * s, y - 16 * s, fx, fy, 9 * s))
-    for ang, ln in ((-0.95, 44), (0.12, 40), (0.9, 50)):
-        limb(fx, fy, ang + rnd.uniform(-0.12, 0.12), ln * s, 6.2 * s, 2)
-
-    wood = ""
-    for x0, y0, cx, cy, x1, y1, w in segs:
-        wood += (
-            f'<path d="M{x0:.1f},{y0:.1f} Q{cx:.1f},{cy:.1f} {x1:.1f},{y1:.1f}" fill="none" '
-            f'stroke="{TREE}" stroke-width="{max(w, 0.9 * s):.1f}" stroke-linecap="round"/>'
-        )
-    leaves = ""
-    for px, py in tips + mids[1::2]:
-        reach = rnd.uniform(17, 27) * s
-        for _ in range(rnd.randint(10, 16)):
-            if rnd.random() < 0.12:
-                continue
-            ox = rnd.gauss(0, reach)
-            oy = rnd.gauss(-2 * s, reach * 0.38)
-            leaves += f'<path d="{blob(px + ox, py + oy, rnd.uniform(4.5, 9) * s, rnd)}"/>'
-    for _ in range(3):
-        px, py = rnd.choice(tips)
-        leaves += f'<path d="{blob(px + rnd.uniform(-30, 30) * s, py + rnd.uniform(-12, 8) * s, rnd.uniform(2.6, 4.2) * s, rnd)}"/>'
-    return f'<g fill="{TREE}">{wood}<g>{leaves}</g></g>'
-
-
 def conifer_row(ys, i, xs, hr, col, seed, wr=0.17, lean_max=0.5):
     rnd = random.Random(seed)
     out = f'<g fill="{col}" stroke="{col}" stroke-width=".5" stroke-linejoin="round">'
@@ -231,13 +167,11 @@ def desktop():
     far = conifer_row(ys, 4, clumps(rnd, [(760, 980), (1090, 1160)], 20), (22, 40), mix(COLS[4], TREE, 0.3), 21, 0.15)
     mid = conifer_row(ys, 5, clumps(rnd, [(620, 700), (880, 1010), (1060, 1150), (1425, 1440)], 26), (38, 66), mix(COLS[5], TREE, 0.5), 22)
     near = conifer_row(ys, 6, clumps(rnd, [(1010, 1110)], 34), (50, 88), mix(COLS[6], TREE, 0.72), 23, 0.18)
-    tx, tx2 = 1196, 1346
-    main = broad_tree(tx, y_at(ys, 6, tx) + 4, 1.25, 5, lean=0.4)
-    small = broad_tree(tx2, y_at(ys, 6, tx2) + 4, 0.55, 9, lean=-0.5)
+    edge = conifer_row(ys, 6, [1176, 1243, 1362], (56, 90), mix(COLS[6], TREE, 0.85), 24, 0.16, 0.2) + conifer_row(ys, 6, [1300, 1413], (118, 150), mix(COLS[6], TREE, 0.9), 25, 0.15, 0.15)
     body = (
         f'<rect width="{W}" height="{H}" fill="url(#dsky)"/><ellipse cx="930" cy="560" rx="760" ry="250" fill="url(#dglow)"/>'
         '<g fill="#fff" filter="url(#dbl2)"><ellipse cx="1010" cy="170" rx="260" ry="7" opacity=".5"/><ellipse cx="1180" cy="235" rx="200" ry="5" opacity=".4"/><ellipse cx="760" cy="120" rx="150" ry="4" opacity=".35"/></g>'
-        f"{lp[0]}{lp[1]}{mist(470, 620, 22, .5)}{lp[2]}{lp[3]}{mist(560, 700, 26, .55)}{lp[4]}{far}{lp[5]}{mid}{mist(660, 760, 24, .4)}{lp[6]}{near}{main}{small}{lp[7]}"
+        f"{lp[0]}{lp[1]}{mist(470, 620, 22, .5)}{lp[2]}{lp[3]}{mist(560, 700, 26, .55)}{lp[4]}{far}{lp[5]}{mid}{mist(660, 760, 24, .4)}{lp[6]}{near}{edge}{lp[7]}"
         + birds([(980, 300, 12), (1012, 286, 10), (1000, 320, 8), (1046, 308, 8)], 1.4, 0.55)
     )
     return wrap(W, H, defs, body)
@@ -262,13 +196,11 @@ def mobile():
     far = conifer_row(ys, 4, clumps(rnd, [(150, 390)], 17), (13, 24), mix(COLS[4], TREE, 0.3), 41, 0.15)
     mid = conifer_row(ys, 5, clumps(rnd, [(0, 110), (150, 250), (330, 390)], 20), (22, 40), mix(COLS[5], TREE, 0.5), 42)
     near = conifer_row(ys, 6, clumps(rnd, [(8, 120), (190, 250), (352, 390)], 22), (30, 52), mix(COLS[6], TREE, 0.72), 43, 0.18)
-    tx, tx2 = 296, 356
-    main = broad_tree(tx, y_at(ys, 6, tx) + 4, 0.8, 5, lean=0.4)
-    small = broad_tree(tx2, y_at(ys, 6, tx2) + 4, 0.36, 9, lean=-0.5)
+    edge = conifer_row(ys, 6, [284, 330], (32, 50), mix(COLS[6], TREE, 0.85), 44, 0.16, 0.2) + conifer_row(ys, 6, [362], (68, 84), mix(COLS[6], TREE, 0.9), 45, 0.15, 0.15)
     body = (
         f'<rect width="{W}" height="{H}" fill="url(#msky)"/><ellipse cx="250" cy="270" rx="330" ry="130" fill="url(#mglow)"/>'
         '<g fill="#fff" filter="url(#mbl)"><ellipse cx="260" cy="70" rx="140" ry="4" opacity=".5"/><ellipse cx="120" cy="30" rx="90" ry="3" opacity=".4"/></g>'
-        f"{lp[0]}{lp[1]}{mist(240, .5)}{lp[2]}{lp[3]}{mist(300, .5)}{lp[4]}{far}{lp[5]}{mid}{mist(380, .4)}{lp[6]}{near}{main}{small}{lp[7]}"
+        f"{lp[0]}{lp[1]}{mist(240, .5)}{lp[2]}{lp[3]}{mist(300, .5)}{lp[4]}{far}{lp[5]}{mid}{mist(380, .4)}{lp[6]}{near}{edge}{lp[7]}"
         + birds([(210, 150, 8), (234, 140, 6), (226, 162, 6)], 1, 0.5)
     )
     return wrap(W, H, defs, body)
