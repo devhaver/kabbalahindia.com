@@ -78,14 +78,15 @@ Every signup gets a free PDF. The file lives at `public/downloads/material-and-s
 
 Names are prefixed `NUXT_` so they bind to `runtimeConfig` automatically. See `.env.example` for the full list with inline comments.
 
-| Variable                       | Required | Purpose                                           |
-| ------------------------------ | -------- | ------------------------------------------------- |
-| `NUXT_PUBLIC_WHATSAPP_URL`     | yes      | WhatsApp group invite or `wa.me/...` link         |
-| `NUXT_PUBLIC_UMAMI_WEBSITE_ID` | no       | Umami site UUID; analytics is disabled when unset |
-| `NUXT_TELEGRAM_BOT_TOKEN`      | no       | Telegram bot token for signup notifications       |
-| `NUXT_TELEGRAM_CHAT_ID`        | no       | Telegram chat ID to deliver notifications to      |
-| `NUXT_SIGNUP_WEBHOOK_URL`      | no       | Optional outbound webhook for signups             |
-| `NUXT_SIGNUP_WEBHOOK_TOKEN`    | no       | Bearer token sent with the webhook request        |
+| Variable                       | Required | Purpose                                                               |
+| ------------------------------ | -------- | --------------------------------------------------------------------- |
+| `NUXT_PUBLIC_WHATSAPP_URL`     | yes      | WhatsApp group invite or `wa.me/...` link                             |
+| `NUXT_PUBLIC_UMAMI_WEBSITE_ID` | no       | Umami site UUID; analytics is disabled when unset                     |
+| `NUXT_TELEGRAM_BOT_TOKEN`      | no       | Telegram bot token for signup notifications                           |
+| `NUXT_TELEGRAM_CHAT_ID`        | no       | Telegram chat ID to deliver notifications to                          |
+| `NUXT_SIGNUP_WEBHOOK_URL`      | no       | Optional outbound webhook for signups                                 |
+| `NUXT_SIGNUP_WEBHOOK_TOKEN`    | no       | Bearer token sent with the webhook request                            |
+| `NUXT_PUBLIC_LESSONS_BASE_URL` | no       | Daily Lessons site to read from (default `https://bb-docs.github.io`) |
 
 Never commit a `.env` file. `.env*` is gitignored except for `.env.example`.
 

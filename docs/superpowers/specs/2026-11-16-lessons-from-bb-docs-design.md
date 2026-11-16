@@ -1,6 +1,7 @@
 # Daily lessons on kabbalahindia.com — design
 
-Status: draft, awaiting owner approval. Build is sequenced **after** the site
+Status: implemented (kabbalahindia.com side). The lessons-site change (index
+file + markers) ships separately. Build was sequenced **after** the site
 redesign (see Constraints).
 
 ## Intent
@@ -77,55 +78,90 @@ kabbalahindia.com.
 
 ### kabbalahindia.com
 
-- `server/utils/lessons.ts`
-  - `fetchLessonIndex()` — GET `lessons.json`, validate with valibot, return
-    typed entries.
-  - `fetchLessonBody(path)` — GET the rendered lesson page, return the HTML
-    between the markers. Rejects any `path` not present in the index, so the
-    route cannot be used to proxy arbitrary URLs.
-  - `sanitizeLessonHtml(html)` — allow-list of the tags kramdown emits
-    (headings, p, ul/ol/li, blockquote, strong/em, a, hr, table family, code);
-    everything else, and all attributes except `href` on links, is dropped.
-    Relative links and image sources are rewritten to absolute lessons-site
-    URLs.
-- `server/api/lessons/index.get.ts` and `server/api/lessons/[...path].get.ts`,
-  both cached ~10 minutes (`defineCachedEventHandler`, stale-while-revalidate).
-  The existing `/api/**` `no-store` route rule is narrowed so it does not
-  defeat this cache.
-- `app/pages/lessons/index.vue` — all lessons, newest first, grouped by month:
-  date, title, subtitle.
-- `app/pages/lessons/[...path].vue` — title, subtitle, date, body, previous /
-  next links (derived from the index), "← All lessons".
+- `server/utils/lessons.ts` (pure, no Nitro APIs, unit-tested)
+  - `fetchLessonIndex(baseUrl)` — GET `lessons.json`, validate with valibot
+    (`parseLessonIndex`), return typed entries.
+  - `fetchLessonBody(baseUrl, path, index)` — looks `path` up in the index
+    (`findLessonEntry`, exact match after normalising the trailing slash),
+    throws `not-found` otherwise, then GETs the page for the **index entry's**
+    path and returns the HTML between the markers (`extractLessonBody`: the
+    markers must each appear exactly once, in order, around non-empty
+    content). Unvalidated input never builds an upstream URL.
+  - `sanitizeLessonHtml(html, baseUrl)` — a small allow-list tokenizer (no
+    dependency). Tags kept: h2–h5, p, ul/ol/li, blockquote, strong/em/b/i, a,
+    hr, br, code, pre, table family, sup/sub. Attributes kept: `id` on
+    headings; `class` on `blockquote` only for tokens matching
+    `/^callout(-[a-z0-9]+)*$/` (the lessons site's callouts; other tokens are
+    dropped); and `href` on links when it is http(s), mailto or relative
+    (rewritten to an absolute lessons-site URL; `#fragment` links stay
+    in-page). External links get `target="_blank" rel="noopener"`. Comments,
+    `script`/`style` (with content), and every other tag (text kept) are
+    removed; open tags are balanced. Nothing else is allowed — in particular
+    no `img`/`audio` (the lesson pages contain none in the body) and no other
+    `class`. Callouts get one restrained panel style.
+  - Failures are `LessonsError` with `kind` `unavailable` or `not-found`.
+- `server/utils/lessons-cache.ts` — `defineCachedFunction` around the two
+  upstream fetches, `maxAge` 600 s, `staleMaxAge` 1 h, stale-while-revalidate,
+  default in-memory storage. On Workers this cache is per isolate and
+  best-effort; no KV/R2 binding is used. Only validated index paths become
+  cache keys. The cached body is the already-sanitized string.
+- `GET /api/lessons` and `GET /api/lessons/<path…>` return JSON:API documents
+  (`data` with `type`/`id`/`attributes`; failures are an `errors` array with
+  status 404 or 503, `Cache-Control: no-store`). Successes send
+  `Cache-Control: public, max-age=300`. The lesson document carries
+  `meta.previous` (next-older) and `meta.next` (next-newer) so the page does
+  not need the whole index. The old `/api/**` `no-store` route rule is
+  narrowed to `/api/signup`.
+- `app/pages/lessons/index.vue` — all lessons newest first, grouped by month
+  (date, title, subtitle clamped to two lines); plain hairline rows.
+- `app/pages/lessons/[...path].vue` — "← All lessons", date, title, subtitle,
+  body (`v-html` of the sanitized string, reading styles scoped to
+  `.lesson-body`), previous/next, and a closing line with one "Join free"
+  button to `/#signup`. Both pages fetch with `useFetch`, so they render on
+  the server. Success sends `Cache-Control: public, max-age=300` from the page;
+  errors do not.
 - Lesson URLs mirror the lessons site: `/lessons/YYYY/MM/DD/<slug>/`.
-- `SiteHeader.vue` gains a "Lessons" link.
-- SEO: each lesson page sets `<link rel="canonical">` to the lessons-site
-  original; the list page is canonical on kabbalahindia.com.
-- Failure: if the lessons site is unreachable or the markers are missing, the
-  lessons pages render a "Lessons are unavailable right now" state with a link
-  to the lessons site; unknown paths return 404.
-- Runtime config: `NUXT_PUBLIC_LESSONS_BASE_URL`, default
-  `https://bb-docs.github.io`, documented in `.env.example`.
-- Date formatting uses one shared `Intl.DateTimeFormat` instance.
+- Navigation: `SiteHeader.vue` and the footer's site column gain "Lessons";
+  their anchor links became router links to `/#program` etc. so they work from
+  the lessons pages. The header is always solid (mist) off the home page. The
+  lessons pages render the footer.
+- SEO: lesson pages override the module's canonical (single tag) and `og:url`
+  with the lessons-site original; `/lessons` is canonical here. `/lessons` is
+  in the sitemap, individual lessons are excluded.
+- Failure: if the lessons site is unreachable, returns bad JSON, or the
+  markers are missing, the pages render "Lessons are unavailable right now"
+  with a link to the lessons site and HTTP 503; unknown paths return a real
+  404 via `createError`. `/` is unaffected.
+- Runtime config: `runtimeConfig.public.lessonsBaseUrl`
+  (`NUXT_PUBLIC_LESSONS_BASE_URL`), default `https://bb-docs.github.io`,
+  documented in `.env.example` and the README.
+- Dates: `useFormattedLessonDate` holds one shared `Intl.DateTimeFormat` per
+  format, building and formatting in UTC (no timezone drift).
 
 ### Tests (Vitest)
 
-- Index validation: good payload, malformed payload.
-- Body extraction: markers present, markers missing.
-- Sanitizer: script/style/event-handler stripping, relative-link rewriting.
-- Path guard: path not in the index is rejected.
+- Index validation: good payload, malformed payload, upstream failures.
+- Body extraction: markers present, missing, duplicated, misordered.
+- Sanitizer: script/style/iframe/img/event-handler stripping, `javascript:`
+  hrefs (incl. obfuscated), allowed structure and heading ids kept, relative
+  links rewritten, tag balancing, plus one real lesson page fixture
+  (`tests/fixtures/lesson-page.html`).
+- Path guard: path not in the index rejected, trailing-slash normalisation.
+- Date formatting helper.
 
 ## Calls made by the author (not yet confirmed by the owner)
 
 - Canonical URL points at the lessons-site original.
 - Header link only; no landing-page strip.
-- 10-minute cache.
+- 10-minute cache (plus an hour of stale-while-revalidate).
 - Lessons grouped by month on the list page.
 
 ## Left to the builder
 
-- Exact cache keys and stale-while-revalidate windows.
+- Exact cache keys and stale-while-revalidate windows (decided: see above).
 - Typography and spacing of the lessons pages, within the redesigned tokens.
-- Whether prev/next comes from the list endpoint or a combined lesson payload.
+- Whether prev/next comes from the list endpoint or a combined lesson payload
+  (decided: combined, via `meta` on the lesson document).
 
 ## Delivery
 
