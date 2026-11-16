@@ -70,6 +70,10 @@ tests/server/     # vitest unit tests
 Designs/          # design source (design.pen, generated with pencil.dev)
 ```
 
+## Free book
+
+Every signup gets a free PDF. The file lives at `public/downloads/material-and-spiritual.pdf` with its cover at `public/book/material-and-spiritual-cover.jpg`; the title, author, page count and paths are in `app/composables/useFreeBook.ts`. To replace it, drop the new PDF and cover at the same paths and update that one file. `/downloads/*` is served with `X-Robots-Tag: noindex, nofollow` (via `routeRules` in `nuxt.config.ts`), but the PDF URL is public to anyone who has the link — it is not access-controlled.
+
 ## Environment variables
 
 Names are prefixed `NUXT_` so they bind to `runtimeConfig` automatically. See `.env.example` for the full list with inline comments.
