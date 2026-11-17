@@ -2,6 +2,7 @@
 const links = [
   { label: "Course", href: "/#program" },
   { label: "Teachers", href: "/#teachers" },
+  { label: "Watch", href: "/#watch" },
   { label: "FAQ", href: "/#faq" },
   { label: "Lessons", href: "/lessons" },
 ];

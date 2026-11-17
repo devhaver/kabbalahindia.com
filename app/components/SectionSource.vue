@@ -1,6 +1,5 @@
 <script setup lang="ts">
-// From youtube.com/@kabbalah_india, shown as a facade: the iframe only loads
-// once the visitor taps play.
+// From youtube.com/@kabbalah_india.
 const natureVideo = {
   id: "wC3QgL8oJQA",
   title: "Does nature sing?",
@@ -98,33 +97,17 @@ const lineage = [
           Read the daily lessons →
         </NuxtLink>
       </div>
-      <YouTubeCarousel
-        class="source-video w-full"
-        :videos="[natureVideo]"
-        :show-arrows="false"
-        :show-dots="false"
-        on-scroll-away="pause"
-        aria-label="Watch: Does nature sing?"
-      />
+      <figure class="w-full">
+        <VideoFacade :id="natureVideo.id" :title="natureVideo.title" />
+        <figcaption class="mt-3 text-sm">
+          <span class="font-body-en block font-medium text-white">
+            {{ natureVideo.title }}
+          </span>
+          <span class="font-body-en text-mist-300 block">
+            {{ natureVideo.description }}
+          </span>
+        </figcaption>
+      </figure>
     </div>
   </section>
 </template>
-
-<style scoped>
-.source-video {
-  --weburz-yt-radius: 1.125rem;
-  --weburz-carousel-caption-gap: 0.75rem;
-  --weburz-carousel-caption-align: left;
-  --weburz-carousel-caption-title-size: 0.875rem;
-  --weburz-carousel-caption-title-weight: 500;
-  --weburz-carousel-caption-title-color: #fff;
-  --weburz-carousel-caption-description-size: 0.875rem;
-  --weburz-carousel-caption-description-color: var(--color-mist-300);
-  --weburz-carousel-caption-description-opacity: 1;
-}
-
-.source-video :deep(.weburz-caption__title a) {
-  display: inline-block;
-  padding-block: 0.75rem;
-}
-</style>
