@@ -6,14 +6,6 @@ useSeoMeta({
   description:
     "Learn authentic Kabbalah in India — a free online introductory course taught live in English by Indian students of Bnei Baruch. Join free.",
   ogDescription: "Real Kabbalah. In India. Free, online, taught live.",
-  // Static share card in public/ — composed from a real convention frame;
-  // no runtime og-image generation needed.
-  ogImage: "https://kabbalahindia.com/og-image.jpg",
-  ogImageWidth: 1200,
-  ogImageHeight: 630,
-  ogImageAlt:
-    "Kabbalah Academy India — Free, online, authentic Kabbalah taught live.",
-  twitterCard: "summary_large_image",
 });
 
 useSchemaOrg([
