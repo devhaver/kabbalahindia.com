@@ -68,6 +68,7 @@ const cols = computed<FooterCol[]>(() => [
       class="mx-auto grid max-w-[71.875rem] grid-cols-2 gap-9 md:grid-cols-[1.4fr_1fr_1fr_1fr] md:gap-12"
     >
       <div class="col-span-full md:col-span-1">
+        <KaiMark class="mb-3 size-10" />
         <span class="font-display-en text-indigo-500 text-2xl">
           Kabbalah Academy India
         </span>

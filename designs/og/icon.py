@@ -5,6 +5,7 @@ One family, drawn per size so each stays crisp:
   icon-32.svg  the full dawn tile, edges snapped to the 32px grid (rounded tile)
   icon-48.svg  the same, snapped to the 48px grid (rounded tile)
   icon.svg     full-bleed square for the home-screen icons (180/192/512), letters inside the central 80%
+  mark.svg     the same artwork with a 22% rounded tile; app/components/KaiMark.vue mirrors it
 
 Run with: uv run --with fonttools python icon.py
 """
@@ -19,6 +20,7 @@ from fontTools.ttLib import TTFont
 HERE = Path(__file__).parent
 SIZE = 512
 RADIUS = 96  # 6/32 of the tile, as in the old tab icon
+MARK_RADIUS = 112  # 22% of the tile, the on-page logo
 
 INDIGO = "#1a1a4d"
 SAFFRON = "#e27a2e"
@@ -66,12 +68,12 @@ def word_path(height, baseline, gap, stroke, x0, x1):
     return "".join(paths)
 
 
-def dawn(size, rounded, x0, x1, top_px, bottom_px, stroke):
+def dawn(size, rounded, x0, x1, top_px, bottom_px, stroke, corner=RADIUS):
     """Full dawn tile. The stroked letter box spans rows top_px..bottom_px of a `size`px grid."""
     px = SIZE / size
     top, bottom = top_px * px, bottom_px * px
     word = word_path(bottom - top - stroke, bottom - stroke / 2, 18, stroke, x0, x1)
-    radius = RADIUS if rounded else 0
+    radius = corner if rounded else 0
     return (
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {SIZE} {SIZE}" width="{size}" height="{size}">\n'
         f'<defs><clipPath id="c"><rect width="{SIZE}" height="{SIZE}" rx="{radius}" /></clipPath>'
@@ -173,3 +175,4 @@ def tab_16():
 (HERE / "icon-48.svg").write_text(dawn(48, True, 28, 484, 9, 33, 16))
 # Home screen: the letter box stays inside x/y 51..461, the central 80% of the tile.
 (HERE / "icon.svg").write_text(dawn(SIZE, False, 56, 456, 96, 352, 15))
+(HERE / "mark.svg").write_text(dawn(SIZE, True, 56, 456, 96, 352, 15, MARK_RADIUS))
