@@ -91,6 +91,12 @@ const lineage = [
           PhD in Philosophy and Kabbalah · 40+ books on Kabbalah · Studied 12
           years with RABASH
         </p>
+        <NuxtLink
+          to="/lessons"
+          class="font-body-en text-mist-100 mt-2 -ml-1 inline-flex min-h-11 items-center rounded-sm px-1 text-[0.9375rem] underline decoration-mist-500 underline-offset-4 hover:decoration-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+        >
+          Read the daily lessons →
+        </NuxtLink>
       </div>
       <figure class="w-full">
         <VideoFacade :id="natureVideo.id" :title="natureVideo.title" />

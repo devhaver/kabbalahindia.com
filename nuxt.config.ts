@@ -24,6 +24,13 @@ export default defineNuxtConfig({
     defaultLocale: "en",
   },
 
+  // /lessons is listed; individual lessons are canonical on the lessons site,
+  // so they stay out of the sitemap.
+  sitemap: {
+    urls: ["/lessons"],
+    exclude: [/^\/lessons\/./],
+  },
+
   // The org identity behind the site — emitted as schema.org JSON-LD.
   schemaOrg: {
     identity: {
@@ -146,7 +153,9 @@ export default defineNuxtConfig({
           "X-Robots-Tag": "noindex, nofollow",
         },
       },
-      "/api/**": {
+      // Only the signup endpoint is no-store; the lessons API sets its own
+      // short public Cache-Control in its handlers.
+      "/api/signup": {
         cors: false,
         headers: {
           "Cache-Control": "no-store",
@@ -183,6 +192,9 @@ export default defineNuxtConfig({
       // meta-pixel.client.ts plugin skips loading the Pixel entirely. Also
       // used server-side to build the CAPI endpoint URL.
       metaPixelId: "",
+      // Daily Lessons site the /lessons pages read from. Set via
+      // NUXT_PUBLIC_LESSONS_BASE_URL (e.g. to a local mirror in dev).
+      lessonsBaseUrl: "https://bb-docs.github.io",
     },
   },
 

@@ -7,16 +7,20 @@ type FooterCol = {
 
 const waUrl = useWhatsApp();
 
+const linkClass =
+  "font-body-en text-indigo-500 block w-fit py-2.5 rounded-sm text-[0.9375rem] hover:underline hover:underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500";
+
 const cols = computed<FooterCol[]>(() => [
   {
     header: "SITE",
     links: [
-      { label: "Companions", href: "#teachers" },
-      { label: "Program", href: "#program" },
-      { label: "Testimonials", href: "#students" },
-      { label: "Watch", href: "#watch" },
-      { label: "FAQ", href: "#faq" },
-      { label: "Join free", href: "#signup" },
+      { label: "Companions", href: "/#teachers" },
+      { label: "Program", href: "/#program" },
+      { label: "Testimonials", href: "/#students" },
+      { label: "Watch", href: "/#watch" },
+      { label: "FAQ", href: "/#faq" },
+      { label: "Lessons", href: "/lessons" },
+      { label: "Join free", href: "/#signup" },
     ],
   },
   {
@@ -80,16 +84,22 @@ const cols = computed<FooterCol[]>(() => [
         >
           {{ col.header }}
         </h2>
-        <a
-          v-for="l in col.links"
-          :key="l.label"
-          :href="l.href"
-          :target="col.external ? '_blank' : undefined"
-          :rel="col.external ? 'noopener' : undefined"
-          class="font-body-en text-indigo-500 block w-fit py-2.5 rounded-sm text-[0.9375rem] hover:underline hover:underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-        >
-          {{ l.label }}
-        </a>
+        <template v-for="l in col.links" :key="l.label">
+          <a
+            v-if="col.external"
+            :href="l.href"
+            target="_blank"
+            rel="noopener"
+            :class="linkClass"
+          >
+            {{ l.label }}
+          </a>
+          <!-- Internal links go through the router so /#signup etc. scroll
+               correctly when coming from another page. -->
+          <NuxtLink v-else :to="l.href" :class="linkClass">
+            {{ l.label }}
+          </NuxtLink>
+        </template>
       </div>
     </div>
     <p
