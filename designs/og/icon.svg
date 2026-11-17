@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <style>
+    @font-face {
+      font-family: "DM Serif Display";
+      src: url("fonts/DMSerifDisplay-Regular.ttf");
+    }
+  </style>
+  <rect width="512" height="512" fill="#1a1a4d" />
+  <text x="256" y="366" font-family="DM Serif Display, Georgia, serif" font-size="320" text-anchor="middle" fill="#e27a2e">K</text>
+</svg>
