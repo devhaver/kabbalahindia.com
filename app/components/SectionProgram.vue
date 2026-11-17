@@ -21,99 +21,102 @@ const steps = [
     body: "Original texts — Zohar, Talmud Eser Sefirot, the writings of Baal HaSulam — studied slowly, with translation and commentary.",
   },
 ];
+
+const benefits = [
+  {
+    title: "Clarity from authentic spiritual sources",
+    body: "A direct connection to the writings and teachings of Kabbalists, offering timeless wisdom on life and creation.",
+  },
+  {
+    title: "Understanding of human nature",
+    body: "Insight into desires, emotions, and inner struggles, and how to rise above them for a more balanced life.",
+  },
+  {
+    title: "Practical tools for inner growth",
+    body: "Simple, applicable guidance to work with thoughts, intentions, and daily challenges.",
+  },
+  {
+    title: "A path of deeper connection",
+    body: "Understanding how unity, compassion, and connection with others open higher awareness and inner peace.",
+  },
+];
 </script>
 
 <template>
-  <section id="program" class="bg-cream-300">
-    <div
-      class="mx-auto flex max-w-6xl flex-col gap-8 px-8 py-[1.25rem] md:items-center md:gap-12 md:py-24"
-    >
-      <Eyebrow text="THE PROGRAM" tone="gold" />
-      <div class="flex max-w-3xl flex-col gap-3 md:items-center md:text-center">
-        <h2
-          class="font-display-en text-indigo-500 text-[1.875rem] leading-[1.05] md:text-[2.75rem]"
-        >
-          A clear path, four steps deep.
-        </h2>
-        <p class="font-body-en text-charcoal-700 text-[1.0625rem] md:text-base">
-          Every student begins with the foundations. You move at your own pace —
-          no exams, no grading, no hurry.
-        </p>
-      </div>
-
-      <!-- Mobile: vertical ladder -->
-      <ol class="flex w-full flex-col items-stretch md:hidden">
-        <template v-for="(s, i) in steps" :key="s.n">
-          <li
-            class="bg-cream-300 ring-border-maroon flex flex-col gap-[0.375rem] rounded-[0.75rem] bg-white p-[0.875rem] ring-1"
+  <section id="program" class="bg-mist-100 px-5 py-20 md:px-6 md:py-28">
+    <div class="mx-auto max-w-[71.875rem]">
+      <div class="grid grid-cols-1 gap-10 md:grid-cols-[1fr_1.3fr] md:gap-16">
+        <div>
+          <Eyebrow text="The program" class="mb-4" />
+          <h2
+            class="font-display-en text-indigo-500 text-[2rem] leading-[1.15] md:text-[2.625rem]"
           >
-            <span class="font-display-en text-gold-500 text-[2rem]">{{
-              s.n
-            }}</span>
-            <h3 class="font-display-en text-indigo-500 text-lg">
-              {{ s.title }}
-            </h3>
-            <p
-              class="font-body-en text-charcoal-700 text-[1.0625rem] leading-relaxed"
-            >
-              {{ s.body }}
-            </p>
-          </li>
-          <span
-            v-if="i < steps.length - 1"
-            aria-hidden="true"
-            class="bg-gold-500/50 mx-auto h-6 w-px"
-          />
-        </template>
-      </ol>
-
-      <!-- Desktop: horizontal ladder with gold connector line -->
-      <div class="relative hidden w-full md:block">
-        <span
-          aria-hidden="true"
-          class="bg-gold-500/40 absolute left-[10%] right-[10%] top-[3rem] h-px"
-        />
-        <ol class="relative grid grid-cols-4 gap-6">
+            A clear path, four steps deep.
+          </h2>
+          <p
+            class="font-body-en text-ink-500 mt-[1.125rem] max-w-[35rem] text-[1.0625rem] leading-relaxed md:text-lg"
+          >
+            Every student begins with the foundations. You move at your own pace
+            — no exams, no grading, no hurry.
+          </p>
+          <p
+            class="font-body-en text-ink-500 border-mist-200 mt-9 max-w-[27.5rem] border-t pt-[1.375rem] text-base leading-relaxed"
+          >
+            Everything here is free — the course, the lessons, the books, the
+            gatherings. There is no paid tier, now or later.
+          </p>
+        </div>
+        <ol class="border-mist-200 border-b">
           <li
             v-for="s in steps"
             :key="s.n"
-            class="flex flex-col items-center gap-3 text-center"
+            class="border-mist-200 grid grid-cols-[3.5rem_1fr] gap-2 border-t py-[1.625rem]"
           >
             <span
-              class="bg-cream-300 ring-gold-500/60 font-display-en text-gold-500 relative z-10 flex h-[6rem] w-[6rem] items-center justify-center rounded-full text-[2.5rem] ring-1"
+              class="font-display-en text-mist-700 text-[1.625rem] italic"
+              >{{ s.n }}</span
             >
-              {{ s.n }}
-            </span>
-            <h3 class="font-display-en text-indigo-500 text-xl">
-              {{ s.title }}
-            </h3>
-            <p class="font-body-en text-charcoal-700 text-base leading-relaxed">
-              {{ s.body }}
-            </p>
+            <div>
+              <h3 class="font-display-en text-indigo-500 mb-1.5 text-2xl">
+                {{ s.title }}
+              </h3>
+              <p class="font-body-en text-ink-500 text-base leading-relaxed">
+                {{ s.body }}
+              </p>
+            </div>
           </li>
         </ol>
       </div>
 
-      <div
-        class="bg-gold-500/10 flex w-full max-w-2xl items-start gap-2 rounded-[0.625rem] p-[0.875rem]"
-      >
-        <UIcon
-          name="i-lucide-info"
-          class="text-maroon-500 mt-[0.125rem] h-4 w-4 shrink-0"
-        />
-        <p class="font-body-en text-charcoal-700 text-[1rem] md:text-sm">
-          Start with step 1 today. Steps 2–4 open as you're ready — no pressure,
-          no deadlines.
+      <div class="mt-16 md:mt-24">
+        <h3
+          class="font-display-en text-indigo-500 max-w-[35rem] text-[1.625rem] leading-[1.2] md:text-[1.875rem]"
+        >
+          Upon completing the free course, you'll gain
+        </h3>
+        <ul
+          class="mt-10 grid grid-cols-1 gap-7 md:grid-cols-2 md:gap-x-[4.5rem] md:gap-y-10"
+        >
+          <li v-for="b in benefits" :key="b.title">
+            <h4
+              class="font-body-en text-indigo-500 mb-1.5 text-base font-semibold"
+            >
+              {{ b.title }}
+            </h4>
+            <p
+              class="font-body-en text-ink-500 text-[0.96875rem] leading-relaxed"
+            >
+              {{ b.body }}
+            </p>
+          </li>
+        </ul>
+        <p
+          class="font-body-en text-ink-400 mt-14 text-sm leading-[1.9] tracking-[0.02em]"
+        >
+          Free e-books · 24/7 instructors · Largest library · Congresses ·
+          Weekly meetups · Live every morning, 6:30 AM IST
         </p>
       </div>
-      <UButton
-        to="#signup"
-        size="xl"
-        trailing-icon="i-lucide-arrow-right"
-        class="text-charcoal-800"
-      >
-        Begin with the foundations
-      </UButton>
     </div>
   </section>
 </template>

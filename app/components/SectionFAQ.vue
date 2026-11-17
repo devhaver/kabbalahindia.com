@@ -54,51 +54,45 @@ useSchemaOrg(
 </script>
 
 <template>
-  <section id="faq" class="bg-cream-300">
+  <section id="faq" class="bg-mist-50 px-5 py-20 md:px-6 md:py-28">
     <div
-      class="mx-auto flex max-w-3xl flex-col gap-[1.375rem] px-8 py-12 md:py-20"
+      class="mx-auto grid max-w-[71.875rem] grid-cols-1 gap-10 md:grid-cols-[1fr_1.5fr] md:gap-22"
     >
-      <Eyebrow text="COMMON QUESTIONS" tone="maroon" />
-      <BilingualHeading
-        :en-lines="[`Everything you'd want to ask`, 'before you start.']"
-        :accent-index="1"
-        size="sm"
-      />
+      <div>
+        <Eyebrow text="Common questions" class="mb-4" />
+        <h2
+          class="font-display-en text-indigo-500 text-[2rem] leading-[1.15] md:text-[2.625rem]"
+        >
+          Everything you'd want to ask before you start.
+        </h2>
+        <p
+          class="font-body-en text-ink-500 mt-7 max-w-[21.25rem] text-[0.9375rem] leading-relaxed"
+        >
+          Other questions? WhatsApp us — a real teacher replies, usually within
+          an hour.
+        </p>
+      </div>
 
       <UAccordion
         :items="faqs"
         type="multiple"
         :default-value="['0']"
         :ui="{
-          root: 'ring-border-maroon rounded-[0.75rem] bg-white ring-1 divide-y divide-border-maroon',
-          item: '',
+          root: 'border-mist-200 border-b',
+          item: 'border-mist-200 border-t',
           trigger:
-            'font-body-en text-indigo-500 text-[1.0625rem] md:text-base font-medium py-4 px-[0.875rem] md:px-6 text-left',
-          content: 'pb-4 px-[0.875rem] md:px-6',
-          body: 'font-body-en text-charcoal-700 text-[1.0625rem] md:text-base leading-relaxed pb-2',
-          trailingIcon: 'text-maroon-500 size-[1.125rem] shrink-0',
+            'font-body-en text-indigo-500 cursor-pointer py-[1.375rem] pr-10 text-left text-[1.125rem] font-medium',
+          content: 'font-body-en',
+          body: 'text-ink-500 pb-6 pr-10 text-[1.03125rem] leading-[1.7]',
         }"
       >
         <template #trailing="{ open }">
           <UIcon
             :name="open ? 'i-lucide-minus' : 'i-lucide-plus'"
-            class="text-maroon-500 size-[1.125rem] shrink-0"
+            class="text-mist-700 ms-auto size-5 shrink-0"
           />
         </template>
       </UAccordion>
-
-      <div
-        class="bg-forest-500/10 flex items-start gap-2 rounded-[0.625rem] p-[0.875rem]"
-      >
-        <UIcon
-          name="i-lucide-message-circle"
-          class="text-forest-500 mt-[0.125rem] h-4 w-4 shrink-0"
-        />
-        <p class="font-body-en text-charcoal-700 text-[1rem] md:text-sm">
-          Other questions? WhatsApp us — a real teacher replies, usually within
-          an hour.
-        </p>
-      </div>
     </div>
   </section>
 </template>

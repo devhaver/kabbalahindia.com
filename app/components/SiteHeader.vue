@@ -1,24 +1,53 @@
+<script setup lang="ts">
+const links = [
+  { label: "Course", href: "/#program" },
+  { label: "Teachers", href: "/#teachers" },
+  { label: "Watch", href: "/#watch" },
+  { label: "FAQ", href: "/#faq" },
+  { label: "Lessons", href: "/lessons" },
+];
+
+// Transparent over the hero sky on the home page; a translucent mist bar once
+// the page moves. Other pages have no hero, so the bar is always solid there.
+const route = useRoute();
+const { y } = useWindowScroll();
+const solid = computed(() => route.path !== "/" || y.value > 8);
+</script>
+
 <template>
-  <header class="bg-indigo-500 fixed inset-x-0 top-0 z-40 w-full">
+  <header
+    class="fixed inset-x-0 top-0 z-40 w-full border-b transition-colors"
+    :class="
+      solid
+        ? 'bg-mist-50/85 border-mist-200 backdrop-blur-md'
+        : 'border-transparent'
+    "
+  >
     <div
-      class="mx-auto flex h-[3.25rem] max-w-6xl items-center justify-between px-5 md:px-12"
+      class="mx-auto flex h-14 max-w-[71.875rem] items-center justify-between gap-4 px-5 md:px-6"
     >
-      <a href="#top" class="flex items-baseline gap-2 leading-tight">
-        <span
-          class="font-display-en text-cream-300 text-[1.0625rem] md:text-base"
+      <NuxtLink
+        to="/#top"
+        class="font-display-en text-indigo-500 inline-flex min-h-11 items-center rounded-sm text-[1.1875rem] leading-none whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-500 md:text-[1.375rem]"
+      >
+        Kabbalah Academy India
+      </NuxtLink>
+      <nav aria-label="Primary" class="flex items-center gap-[1.875rem]">
+        <NuxtLink
+          v-for="l in links"
+          :key="l.href"
+          :to="l.href"
+          class="font-body-en text-indigo-500 hidden rounded-sm text-[0.9375rem] hover:underline hover:underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-500 md:inline"
         >
-          Kabbalah Academy
-        </span>
-      </a>
-      <div class="flex items-center gap-5">
-        <a
-          href="#signup"
-          class="bg-saffron-500 hover:bg-saffron-600 text-charcoal-800 font-body-en hidden rounded-full px-4 py-[0.4375rem] text-[1rem] font-medium transition-colors md:inline-flex md:items-center md:gap-1.5"
+          {{ l.label }}
+        </NuxtLink>
+        <NuxtLink
+          to="/#signup"
+          class="bg-saffron-500 hover:bg-saffron-600 text-charcoal-800 font-body-en inline-flex min-h-11 items-center rounded-full px-[1.125rem] text-sm font-semibold whitespace-nowrap transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
         >
           Join free
-          <UIcon name="i-lucide-arrow-right" class="h-3 w-3" />
-        </a>
-      </div>
+        </NuxtLink>
+      </nav>
     </div>
   </header>
 </template>

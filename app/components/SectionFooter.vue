@@ -5,15 +5,22 @@ type FooterCol = {
   links: { label: string; href: string }[];
 };
 
-const cols: FooterCol[] = [
+const waUrl = useWhatsApp();
+
+const linkClass =
+  "font-body-en text-indigo-500 block w-fit py-2.5 rounded-sm text-[0.9375rem] hover:underline hover:underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500";
+
+const cols = computed<FooterCol[]>(() => [
   {
     header: "SITE",
     links: [
-      { label: "Companions", href: "#teachers" },
-      { label: "Program", href: "#program" },
-      { label: "Testimonials", href: "#students" },
-      { label: "FAQ", href: "#faq" },
-      { label: "Join free", href: "#signup" },
+      { label: "Companions", href: "/#teachers" },
+      { label: "Program", href: "/#program" },
+      { label: "Testimonials", href: "/#students" },
+      { label: "Watch", href: "/#watch" },
+      { label: "FAQ", href: "/#faq" },
+      { label: "Lessons", href: "/lessons" },
+      { label: "Join free", href: "/#signup" },
     ],
   },
   {
@@ -31,102 +38,74 @@ const cols: FooterCol[] = [
       },
     ],
   },
-];
-
-const waUrl = useWhatsApp();
-
-const social = computed(() => [
   {
-    icon: "i-lucide-youtube",
-    href: "https://www.youtube.com/@kabbalah_india",
-    label: "YouTube",
-  },
-  {
-    icon: "i-lucide-instagram",
-    href: "https://www.instagram.com/Kabbalah.hindi",
-    label: "Instagram",
-  },
-  {
-    icon: "i-lucide-facebook",
-    href: "https://www.facebook.com/in.kabbalah.academy",
-    label: "Facebook",
-  },
-  {
-    icon: "i-lucide-message-circle",
-    href: waUrl.value,
-    label: "WhatsApp",
+    header: "SOCIAL",
+    external: true,
+    links: [
+      {
+        label: "YouTube",
+        href: "https://www.youtube.com/@kabbalah_india",
+      },
+      {
+        label: "Instagram",
+        href: "https://www.instagram.com/Kabbalah.hindi",
+      },
+      {
+        label: "Facebook",
+        href: "https://www.facebook.com/in.kabbalah.academy",
+      },
+      { label: "WhatsApp", href: waUrl.value },
+    ],
   },
 ]);
 </script>
 
 <template>
-  <footer class="bg-charcoal-800 text-cream-300">
+  <footer
+    class="bg-mist-50 border-mist-200 border-t px-5 pt-[4.5rem] pb-10 md:px-6"
+  >
     <div
-      class="mx-auto flex max-w-6xl flex-col gap-6 px-8 py-[1.375rem] md:px-12 md:py-20"
+      class="mx-auto grid max-w-[71.875rem] grid-cols-2 gap-9 md:grid-cols-[1.4fr_1fr_1fr_1fr] md:gap-12"
     >
-      <div class="flex flex-col gap-1">
-        <span class="font-display-en text-cream-300 text-[1.25rem] md:text-3xl">
+      <div class="col-span-full md:col-span-1">
+        <span class="font-display-en text-indigo-500 text-2xl">
           Kabbalah Academy India
         </span>
-        <span
-          class="font-body-en text-cream-300/60 text-[1.0625rem] md:text-base"
-        >
+        <p class="font-body-en text-ink-400 mt-1.5 text-sm">
           A direct path to self-knowledge.
-        </span>
-        <span class="font-body-en text-cream-300/40 mt-2 text-[0.9375rem]">
+        </p>
+        <p class="font-body-en text-ink-400 mt-1.5 text-sm">
           In direct association with Bnei Baruch, Israel.
-        </span>
+        </p>
       </div>
-
-      <div class="grid grid-cols-2 gap-6 md:grid-cols-3 md:gap-10">
-        <div
-          v-for="col in cols"
-          :key="col.header"
-          class="flex flex-col gap-[0.625rem]"
+      <div v-for="col in cols" :key="col.header">
+        <h2
+          class="font-body-en text-ink-400 mb-1.5 text-xs font-semibold tracking-[0.14em]"
         >
-          <h3
-            class="font-body-en text-gold-500 text-[0.875rem] font-medium tracking-[0.16em]"
-          >
-            {{ col.header }}
-          </h3>
+          {{ col.header }}
+        </h2>
+        <template v-for="l in col.links" :key="l.label">
           <a
-            v-for="l in col.links"
-            :key="l.label"
+            v-if="col.external"
             :href="l.href"
-            :target="col.external ? '_blank' : undefined"
-            :rel="col.external ? 'noopener' : undefined"
-            class="font-body-en text-cream-300/70 hover:text-cream-300 text-[1.0625rem] transition-colors"
+            target="_blank"
+            rel="noopener"
+            :class="linkClass"
           >
             {{ l.label }}
           </a>
-        </div>
-        <div class="flex flex-col gap-[0.625rem]">
-          <h3
-            class="font-body-en text-gold-500 text-[0.875rem] font-medium tracking-[0.16em]"
-          >
-            SOCIAL
-          </h3>
-          <div class="flex items-center gap-4">
-            <a
-              v-for="s in social"
-              :key="s.label"
-              :href="s.href"
-              target="_blank"
-              rel="noopener"
-              :aria-label="s.label"
-              class="text-gold-500 hover:text-cream-300 transition-colors"
-            >
-              <UIcon :name="s.icon" class="h-6 w-6" />
-            </a>
-          </div>
-        </div>
+          <!-- Internal links go through the router so /#signup etc. scroll
+               correctly when coming from another page. -->
+          <NuxtLink v-else :to="l.href" :class="linkClass">
+            {{ l.label }}
+          </NuxtLink>
+        </template>
       </div>
-
-      <TricolorStrip />
-
-      <p class="font-body-en text-cream-300/45 text-[0.9375rem]">
-        © 2026 Kabbalah Academy India · A Bnei Baruch India initiative
-      </p>
     </div>
+    <p
+      class="font-body-en text-ink-400 mx-auto mt-14 max-w-[71.875rem] text-[0.8125rem]"
+    >
+      © 2026 Kabbalah Academy India · A Bnei Baruch India initiative
+    </p>
   </footer>
 </template>
