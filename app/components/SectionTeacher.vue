@@ -7,12 +7,25 @@ const introPoster = {
   src: "/people/shamir-intro-480.webp",
   srcset:
     "/people/shamir-intro-480.webp 480w, /people/shamir-intro-960.webp 960w",
-  sizes: "(min-width: 48rem) 19rem, 80vw",
+  sizes:
+    "(min-width: 80rem) 32rem, (min-width: 64rem) 30rem, (min-width: 48rem) 17rem, 80vw",
   width: 480,
   height: 573,
   alt: "Shamir Shimshon Galsurkar",
   ratio: "4 / 5",
 };
+
+// Shorts from youtube.com/@IndianInIsrael — an Indian student of the academy
+// answering the doubts every Indian seeker asks first.
+const answers = [
+  { id: "feveocY2b4Y", title: "Is Kabbalah a religion? The truth revealed." },
+  { id: "PWtJARXnj4c", title: "The biggest myths about Kabbalah." },
+  { id: "jW92NKtTgks", title: "A spiritual shift is coming." },
+].map((v) => ({
+  ...v,
+  kind: "shorts" as const,
+  thumbnail: lightStill(v.id),
+}));
 </script>
 
 <template>
@@ -30,20 +43,22 @@ const introPoster = {
         Someone a few steps ahead, walking the same path.
       </p>
 
+      <!-- One grid: the intro still on the left, the bio and the sceptic
+           shorts stacked on the right (beneath both on tablets). -->
       <div
-        class="mt-10 grid grid-cols-1 items-center gap-10 md:mt-14 md:grid-cols-2 md:gap-[4.5rem]"
+        class="mt-10 grid grid-cols-1 items-start md:mt-12 md:grid-cols-[17rem_minmax(0,1fr)] md:gap-x-8 lg:grid-cols-[30rem_minmax(0,1fr)] lg:grid-rows-[auto_1fr] lg:gap-x-12 xl:grid-cols-[32rem_minmax(0,1fr)]"
       >
-        <figure class="mx-auto w-full">
+        <figure
+          class="mx-auto mb-8 w-full max-w-[19rem] md:mx-0 md:mb-0 md:max-w-none lg:row-span-2"
+        >
           <VideoFacade
             :id="introVideoId"
             :title="introTitle"
             shape="tall"
             :poster="introPoster"
-            class="mx-auto max-w-[19rem]"
+            class="w-full"
           />
-          <figcaption
-            class="font-body-en text-ink-400 mx-auto mt-3 max-w-[19rem] text-sm"
-          >
+          <figcaption class="font-body-en text-ink-400 mt-3 text-sm">
             Watch the 60-second intro
           </figcaption>
         </figure>
@@ -64,6 +79,18 @@ const introPoster = {
           <p class="font-body-en text-ink-400 mt-3.5 text-sm">
             English · Marathi
           </p>
+        </div>
+        <div class="mt-10 min-w-0 md:col-span-2 lg:col-span-1 lg:mt-8">
+          <h3 class="font-display-en text-indigo-500 mb-4 text-[1.375rem]">
+            Skeptical? An Indian in Israel answers.
+          </h3>
+          <YouTubeCarousel
+            class="kai-carousel"
+            :videos="answers"
+            :options="{ align: 'start' }"
+            :slides-per-view="{ base: 1.8, '48rem': 3 }"
+            aria-label="Straight answers — an Indian in Israel on Kabbalah"
+          />
         </div>
       </div>
     </div>

@@ -137,3 +137,39 @@
     text-wrap: pretty;
   }
 }
+
+/* Shared @weburz/carousel theme — calm: indigo arrows, mist dots, no shadow. */
+.kai-carousel {
+  --weburz-carousel-accent: var(--color-indigo-500);
+  --weburz-carousel-gap: 1rem;
+  --weburz-carousel-slide-gap: 1.25rem;
+  --weburz-carousel-arrow-color: var(--color-indigo-500);
+  --weburz-carousel-arrow-size: 2.25rem;
+  --weburz-carousel-dot-color: var(--color-mist-500);
+  --weburz-carousel-dot-active-color: var(--color-indigo-500);
+  --weburz-carousel-dot-size: 0.4375rem;
+  --weburz-carousel-dot-gap: 0.5rem;
+  --weburz-carousel-dot-opacity: 0.55;
+  --weburz-carousel-media-radius: 1.125rem;
+  --weburz-carousel-media-shadow: none;
+  --weburz-carousel-caption-align: left;
+  --weburz-carousel-caption-gap: 0.75rem;
+  --weburz-carousel-caption-title-size: 0.875rem;
+  --weburz-carousel-caption-title-weight: 400;
+  --weburz-carousel-caption-title-color: var(--color-ink-500);
+  --weburz-yt-play-size: 2.75rem;
+  --weburz-yt-play-bg: rgb(26 26 77 / 0.72);
+  --weburz-yt-play-bg-hover: var(--color-indigo-400);
+  --weburz-yt-shorts-max-width: none;
+}
+
+.kai-carousel .weburz-caption {
+  font-family: var(--font-body-en);
+  line-height: 1.35;
+}
+
+/* The one-minute videos are square, so their Shorts slot is square too. */
+.kai-carousel--square {
+  --weburz-yt-shorts-aspect: 1 / 1;
+  --weburz-carousel-slide-gap: 1rem;
+}
