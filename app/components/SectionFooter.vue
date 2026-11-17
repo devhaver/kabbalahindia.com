@@ -14,6 +14,7 @@ const cols = computed<FooterCol[]>(() => [
       { label: "Companions", href: "#teachers" },
       { label: "Program", href: "#program" },
       { label: "Testimonials", href: "#students" },
+      { label: "Watch", href: "#watch" },
       { label: "FAQ", href: "#faq" },
       { label: "Join free", href: "#signup" },
     ],

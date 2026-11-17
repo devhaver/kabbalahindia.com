@@ -52,9 +52,11 @@ useSchemaOrg([
     <main>
       <SectionHero />
       <SectionTeacher />
+      <SectionIndianVoice />
       <SectionProgram />
       <SectionStudents />
       <SectionSource />
+      <SectionWatch />
       <SectionFAQ />
       <SectionFinalCTA />
     </main>
