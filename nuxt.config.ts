@@ -115,11 +115,24 @@ export default defineNuxtConfig({
         { name: "theme-color", content: "#f7f9fc" },
       ],
       link: [
-        { rel: "icon", href: "/favicon.ico", sizes: "48x48" },
+        { rel: "icon", href: "/favicon.ico", sizes: "any" },
         {
           rel: "icon",
-          type: "image/svg+xml",
-          href: "data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%226%22 fill=%22%231A1A4D%22/%3E%3Ctext x=%2216%22 y=%2222%22 font-family=%22DM Serif Display,Georgia,serif%22 font-size=%2220%22 text-anchor=%22middle%22 fill=%22%23E27A2E%22%3EK%3C/text%3E%3C/svg%3E",
+          type: "image/png",
+          sizes: "16x16",
+          href: "/favicon-16.png",
+        },
+        {
+          rel: "icon",
+          type: "image/png",
+          sizes: "32x32",
+          href: "/favicon-32.png",
+        },
+        {
+          rel: "icon",
+          type: "image/png",
+          sizes: "48x48",
+          href: "/favicon-48.png",
         },
         { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
         { rel: "manifest", href: "/site.webmanifest" },
