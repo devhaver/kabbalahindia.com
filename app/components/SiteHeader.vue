@@ -24,12 +24,13 @@ const solid = computed(() => route.path !== "/" || y.value > 8);
     "
   >
     <div
-      class="mx-auto flex h-14 max-w-[71.875rem] items-center justify-between gap-4 px-5 md:px-6"
+      class="mx-auto flex h-14 max-w-[71.875rem] items-center justify-between gap-2 px-5 md:gap-4 md:px-6"
     >
       <NuxtLink
         to="/#top"
-        class="font-display-en text-indigo-500 inline-flex min-h-11 items-center rounded-sm text-[1.1875rem] leading-none whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-500 md:text-[1.375rem]"
+        class="font-display-en text-indigo-500 inline-flex min-h-11 items-center gap-1.5 rounded-sm text-base min-[390px]:gap-2 min-[390px]:text-[1.1875rem] leading-none whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-500 md:text-[1.375rem]"
       >
+        <KaiMark class="size-7 min-[390px]:size-[1.875rem] md:size-9" />
         Kabbalah Academy India
       </NuxtLink>
       <nav aria-label="Primary" class="flex items-center gap-[1.875rem]">
@@ -43,7 +44,7 @@ const solid = computed(() => route.path !== "/" || y.value > 8);
         </NuxtLink>
         <NuxtLink
           to="/#signup"
-          class="bg-saffron-500 hover:bg-saffron-600 text-charcoal-800 font-body-en inline-flex min-h-11 items-center rounded-full px-[1.125rem] text-sm font-semibold whitespace-nowrap transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+          class="bg-saffron-500 hover:bg-saffron-600 text-charcoal-800 font-body-en inline-flex min-h-11 items-center rounded-full px-3.5 text-sm md:px-[1.125rem] font-semibold whitespace-nowrap transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
         >
           Join free
         </NuxtLink>
