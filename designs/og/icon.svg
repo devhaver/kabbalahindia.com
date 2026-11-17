@@ -1,10 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
-  <style>
-    @font-face {
-      font-family: "DM Serif Display";
-      src: url("fonts/DMSerifDisplay-Regular.ttf");
-    }
-  </style>
-  <rect width="512" height="512" fill="#1a1a4d" />
-  <text x="256" y="366" font-family="DM Serif Display, Georgia, serif" font-size="320" text-anchor="middle" fill="#e27a2e">K</text>
+  <rect width="512" height="512" rx="96" fill="#1a1a4d" />
+  <path fill="#e27a2e" d="M103.8 414.7V409.8L114 405.9Q123.8 402.5 126.7 396.6Q129.7 390.8 129.7 381.5V125.9Q129.7 116.1 126.7 110.2Q123.8 104.4 114 101L103.8 97V92.2H225.5V97L214.7 101.4Q206.4 104.4 203.5 110.2Q200.5 116.1 200.5 126.4V382Q200.5 391.7 203.7 397.1Q206.9 402.5 216.2 405.9L225.5 409.8V414.7ZM284.1 414.7V409.8L290.5 407.9Q300.2 404.9 300.7 398.1Q301.2 391.3 294.9 382.5L201 249L324.7 122.9Q331.5 116.1 332.2 109.8Q333 103.4 322.7 100L314.4 97V92.2H385.8V97L373.1 101Q362.3 104.4 355.9 109.3Q349.6 114.2 341.3 122.5L253.8 211.9L368.7 379.5Q376 390.3 382.6 397.1Q389.2 404 401.4 407.9L408.2 409.8V414.7Z" />
 </svg>
