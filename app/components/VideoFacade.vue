@@ -27,6 +27,9 @@ const props = defineProps<{
   title: string;
   // The picture's shape: wide 16:9 (default), tall 9:16 (Shorts) or square.
   shape?: Shape;
+  // The video is a square picture YouTube sets inside a 16:9 frame, so its
+  // still carries black bars on all four sides; enlarge it to fill the slot.
+  boxed?: boolean;
   poster?: Poster;
 }>();
 
@@ -52,7 +55,7 @@ const ratio = computed(() =>
 
 <template>
   <div
-    class="bg-mist-200 relative overflow-hidden rounded-[1.125rem]"
+    class="bg-mist-200 @container relative isolate overflow-hidden rounded-[1.125rem]"
     :style="{ aspectRatio: ratio }"
   >
     <iframe
@@ -91,12 +94,13 @@ const ratio = computed(() =>
         loading="lazy"
         decoding="async"
         class="size-full object-cover"
+        :class="{ 'scale-[1.335]': props.boxed }"
       />
       <span
         aria-hidden="true"
-        class="text-indigo-500 absolute bottom-3 left-3 flex size-11 items-center justify-center rounded-full bg-white/90 pl-0.5 transition-colors group-hover:bg-white"
+        class="text-indigo-500 absolute bottom-2.5 left-2.5 flex size-9 items-center justify-center rounded-full bg-white/80 pl-0.5 transition-colors group-hover:bg-white @md:bottom-3 @md:left-3 @md:size-11"
       >
-        <svg viewBox="0 0 24 24" width="18" height="18">
+        <svg viewBox="0 0 24 24" width="14" height="14" class="@md:size-[18px]">
           <path d="M8 5.5v13l11-6.5z" fill="currentColor" />
         </svg>
       </span>

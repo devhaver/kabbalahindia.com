@@ -56,6 +56,16 @@ describe("components/VideoFacade.vue", () => {
     expect(square.attributes("style")).toContain("aspect-ratio: 1 / 1");
   });
 
+  it("enlarges the still of a boxed video to fill its slot", async () => {
+    const plain = await mountSuspended(VideoFacade, { props });
+    const boxed = await mountSuspended(VideoFacade, {
+      props: { ...props, shape: "square", boxed: true },
+    });
+
+    expect(plain.get("img").classes()).not.toContain("scale-[1.335]");
+    expect(boxed.get("img").classes()).toContain("scale-[1.335]");
+  });
+
   it("shows a custom poster in its own ratio, then the player ratio", async () => {
     const poster = {
       src: "/people/shamir-intro-480.webp",

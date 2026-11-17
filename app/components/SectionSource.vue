@@ -28,10 +28,11 @@ const lineage = [
 <template>
   <section
     id="source"
-    class="bg-indigo-500 text-mist-100 px-5 py-20 md:px-6 md:py-28"
+    class="bg-indigo-500 text-mist-100 relative overflow-hidden px-5 py-20 md:px-6 md:py-28"
   >
+    <ParticleBackdrop />
     <div
-      class="mx-auto grid max-w-[71.875rem] grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-20"
+      class="relative mx-auto grid max-w-[71.875rem] grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-20"
     >
       <div>
         <Eyebrow

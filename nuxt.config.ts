@@ -10,6 +10,8 @@ export default defineNuxtConfig({
     "@nuxt/fonts",
     "@nuxt/eslint",
     "@vueuse/nuxt",
+    "@weburz/carousel",
+    "@weburz/particle-canvas",
     "@nuxtjs/seo",
   ],
 

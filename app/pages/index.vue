@@ -52,7 +52,6 @@ useSchemaOrg([
     <main>
       <SectionHero />
       <SectionTeacher />
-      <SectionIndianVoice />
       <SectionProgram />
       <SectionStudents />
       <SectionSource />
